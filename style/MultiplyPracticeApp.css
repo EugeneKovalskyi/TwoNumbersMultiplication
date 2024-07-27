@@ -1,0 +1,78 @@
+body {
+  font-size: 20px;
+  background-color: #1b1b1d;
+  filter: invert(1);
+}
+
+#container {
+  position: absolute;
+  margin: 0;
+  top: 10em;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#numbers {
+  font-size: 2em;
+  left: 50%;
+  text-align: center;
+}
+
+#answerWrapper {
+  text-align: center;
+  margin-top: 2em;
+}
+
+#rightIcon, #wrongIcon {
+  position: absolute;
+}
+
+#rightIcon {
+  left: 0;
+  color: #f4f;
+}
+
+#wrongIcon {
+  right: 0;
+  color: #4ff;
+}
+
+#input {
+  appearance: textfield;
+  display: block;
+  margin-top: 2em;
+  font-size: 1em;
+  padding: 0.2em;
+  border-radius: 0.2em;
+  border: 0.2em solid #000;
+}
+#input:focus {
+  outline: none;
+  border-color: #f44;
+}
+#input:focus::placeholder {
+  color: transparent;
+}
+
+#check {
+  font-size: 1em;
+  color: #333;
+  margin-top: 2em;
+  padding: 1em;
+  border-radius: 0.5em;
+  border: 0.2em solid #888;
+}
+#check:focus {
+  outline: none;
+  border-color: #faf;
+}
+#check:hover {
+  background-color: #ddd;
+  border-color: #f4f;
+}
+#check:active {
+  color: #555;
+  background-color: #ddd;
+}
+
+/*# sourceMappingURL=MultiplyPracticeApp.css.map */

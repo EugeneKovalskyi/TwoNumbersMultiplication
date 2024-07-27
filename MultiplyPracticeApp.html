@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Тренировка умножения чисел в уме</title>
+    <link rel="icon" href="./icons/multiply.svg" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="style/MultiplyPracticeApp.css"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <div id="numbers">
+        <span id="firstMultiplier">0</span>
+        <span >*</span>
+        <span id="secondMultiplier">0</span>
+      </div>
+			<hr>
+      <div id="answerWrapper">
+        <span id="rightIcon">✔</span>
+        <span id="wrongIcon">×</span>
+				<span>Answer</span>
+        <input
+          id="input"
+          type="number"
+        />
+        <input type="button" value="Check" id="check">
+      </div>
+    </div>
+
+    <script src="MultiplyPracticeApp.js"></script>
+  </body>
+</html>
