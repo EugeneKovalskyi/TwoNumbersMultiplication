@@ -1,5 +1,6 @@
 body 
 	font-size: 20px
+	color: #111
 	background-color: #1b1b1d
 	filter: invert(1)
 
@@ -24,11 +25,11 @@ body
 	position: absolute
 
 #rightIcon
-	left: 0
+	left: .2em
 	color: #f4f
 
 #wrongIcon
-	right: 0
+	right: .2em
 	color: #4ff
 
 #input
@@ -38,18 +39,24 @@ body
 	font-size: 1em
 	padding: .2em
 	border-radius: .2em
-	border: .2em solid #000
+	border: .2em solid #888
+
+	&:hover
+		border-color: #555
 
 	&:focus
 		outline: none
-		border-color: #f44
+		border-color: #555
+		box-shadow: 0 0 .4em#555
 
-		&::placeholder
-			color: transparent
+	&.right-answer
+		border-color: #f4f
+
+	&.wrong-answer
+		border-color: #4ff
 
 #check
 	font-size: 1em
-	color: #333
 	margin-top: 2em
 	padding: 1em
 	border-radius: .5em
@@ -57,11 +64,10 @@ body
 
 	&:focus
 		outline: none
-		border-color: #faf
 
 	&:hover
 		background-color: #ddd
-		border-color: #f4f
+		border-color: #555
 
 	&:active
 		color: #555

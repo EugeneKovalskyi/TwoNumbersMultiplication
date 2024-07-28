@@ -1,7 +1,8 @@
-const ANSWER_LIMIT 			 = 10e5
-const MULTIPLIER_LIMIT   = 10e2
-const VALID_INPUT_VALUES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
-													 'Backspace', 'Tab', 'ArrowLeft', 'ArrowRight']
+
+const ANSWER_LIMIT 			 		= 10e5
+const MULTIPLIER_LIMIT   		= 10e2
+const VALID_INPUT_VALUES 		= ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
+													 		 'Backspace', 'ArrowLeft', 'ArrowRight']
 
 const rightIcon 						= document.getElementById('rightIcon')
 const wrongIcon							= document.getElementById('wrongIcon')
@@ -18,6 +19,7 @@ document.addEventListener('keydown', onKeydown)
 document.addEventListener('keyup', onKeyup)
 document.addEventListener('click', onClick)
 
+// Handlers
 function onLoad() {
 	rightIcon.hidden = true
 	wrongIcon.hidden = true
@@ -34,17 +36,49 @@ function onKeyup(event) {
 }
 
 function onKeyupEnter() {
-	onClickCheck()
+	onCheck()
 }
 
 function onClick(event) {
-	if (event.target === checkButton)  onClickCheck()
+	if (event.target === checkButton)  onCheck()
 }
 
 function onKeydownInput(event) {
 	if ( !( VALID_INPUT_VALUES.includes(event.key) ) || event.key === ' ' ) {
 		event.preventDefault()
 	}
+}
+
+function onCheck() {
+	setUserAnswer()
+	checkAnswer()
+	updateExp()
+}
+
+// Implementation
+function setUserAnswer() {
+	userAnswer = input.value
+}
+
+function checkAnswer() {
+  if (correctAnswer === +userAnswer) {
+    rightIcon.hidden = false
+    input.classList.add('right-answer')
+
+    setTimeout(() => {
+      rightIcon.hidden = true
+      input.classList.remove('right-answer')
+    }, 700)
+
+  } else {
+    wrongIcon.hidden = false
+    input.classList.add('wrong-answer')
+
+    setTimeout(() => {
+      wrongIcon.hidden = true
+      input.classList.remove('wrong-answer')
+    }, 700)
+  }
 }
 
 function updateExp() {
@@ -56,24 +90,6 @@ function updateExp() {
 
 	calculateCorrectAnswer(firstNumber, secondNumber)
 	clearInput()
-}
-
-function onClickCheck() {
-	setUserAnswer()
-
-	if (correctAnswer === +userAnswer) {
-		rightIcon.hidden = false
-		setTimeout(() => rightIcon.hidden = true, 1000)	
-	} else {
-		wrongIcon.hidden = false
-		setTimeout(() => wrongIcon.hidden = true, 1000)
-	}
-
-	updateExp()
-}
-
-function setUserAnswer() {
-	userAnswer = input.value
 }
 
 function calculateCorrectAnswer(firstNumber, secondNumber) {
