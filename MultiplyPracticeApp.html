@@ -11,17 +11,18 @@
     <link
       rel="stylesheet"
       href="style/MultiplyPracticeApp.css"
+      type="text/css"
     />
   </head>
   <body>
+    <div id="stopwatch">00.00</div>
     <div id="container">
-      <div id="numbers">
-        <span id="firstMultiplier">0</span>
-        <span >*</span>
-        <span id="secondMultiplier">0</span>
+      <div class="expression-wrapper">
+        <span id="start">Start</span>
+        <span id="mathExpression"></span>
       </div>
 			<hr>
-      <div id="answerWrapper">
+      <div class="answer-wrapper">
         <span id="rightIcon">✔</span>
         <span id="wrongIcon">×</span>
 				<span>Answer</span>
@@ -33,6 +34,6 @@
       </div>
     </div>
 
-    <script src="MultiplyPracticeApp.js"></script>
+    <script type="module" src="MultiplyPracticeApp.js"></script>
   </body>
 </html>

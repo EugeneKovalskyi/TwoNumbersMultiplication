@@ -1,30 +1,36 @@
+import { startStopwatch, stopwatchTime } from './Stopwatch.js'
 
-const ANSWER_LIMIT 			 		= 10e5
-const MULTIPLIER_LIMIT   		= 10e2
-const VALID_INPUT_VALUES 		= ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
-													 		 'Backspace', 'ArrowLeft', 'ArrowRight']
+const ANSWER_LIMIT 			 = 10e5
+const MULTIPLIER_LIMIT   = 10e2
+const VALID_INPUT_VALUES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
+													 	'Backspace', 'ArrowLeft', 'ArrowRight']
+// Elements
+const mathExpression 		 = document.getElementById('mathExpression')
+const startButton  			 = document.getElementById('start')
+const checkButton 			 = document.getElementById('check')
+const rightIcon 				 = document.getElementById('rightIcon')
+const wrongIcon					 = document.getElementById('wrongIcon')
+const stopwatch					 = document.getElementById('stopwatch')								
+const input 						 = document.getElementById('input')
 
-const rightIcon 						= document.getElementById('rightIcon')
-const wrongIcon							= document.getElementById('wrongIcon')
-const firstMultiplierElem 	= document.getElementById('firstMultiplier')
-const secondMultiplierElem 	= document.getElementById('secondMultiplier')
-const checkButton 					= document.getElementById('check')
-const input 								= document.getElementById('input')
 
-let userAnswer 		  				= null
-let correctAnswer   				= null
+const allAnswerLogs	= []
 
-window.addEventListener('load', onLoad)
+let stopwatchId		  = null
+let correctAnswer   = null		
+
+window  .addEventListener('load',    onLoad)
 document.addEventListener('keydown', onKeydown)
-document.addEventListener('keyup', onKeyup)
-document.addEventListener('click', onClick)
+document.addEventListener('keyup',   onKeyup)
+document.addEventListener('click',   onClick)
 
 // Handlers
 function onLoad() {
-	rightIcon.hidden = true
-	wrongIcon.hidden = true
-
-	updateExp()
+	mathExpression.hidden = true
+	rightIcon.hidden   		= true
+	wrongIcon.hidden   		= true
+	checkButton.disabled 	= true
+	input.disabled     		= true
 }
 
 function onKeydown(event) {
@@ -32,15 +38,43 @@ function onKeydown(event) {
 }
 
 function onKeyup(event) {
-	if (event.target === input && event.key === 'Enter') onKeyupEnter()
-}
-
-function onKeyupEnter() {
-	onCheck()
+	if (event.target === input && event.key === 'Enter') onCheck()
 }
 
 function onClick(event) {
-	if (event.target === checkButton)  onCheck()
+	if (event.target === checkButton)   onCheck()
+	if (event.target === startButton)   onStart()
+	if (event.target === stopwatch)     onStop()
+}
+
+// Implementation
+function onCheck() {
+	let expression = mathExpression.textContent
+	let userAnswer = input.value
+	let isCorrect  = correctAnswer === +userAnswer
+
+	// Check
+	checkAnswer(isCorrect)
+
+	// PushLog 
+	if (stopwatchId) {
+		allAnswerLogs.push({
+			expression,
+			userAnswer,
+			correctAnswer,
+			isCorrect,
+			stopwatchTime,
+		})
+
+		// Clear
+		clearInterval(stopwatchId)
+	}
+
+	// Start & SaveId
+	stopwatchId = startStopwatch(stopwatch)
+
+	// Next expression
+	updateExpression()
 }
 
 function onKeydownInput(event) {
@@ -49,19 +83,34 @@ function onKeydownInput(event) {
 	}
 }
 
-function onCheck() {
-	setUserAnswer()
-	checkAnswer()
-	updateExp()
+function onStart() {
+	mathExpression.hidden = false
+	startButton.hidden 		= true
+	checkButton.disabled 	= false
+	input.disabled     		= false
+
+	stopwatch.classList.remove('timestop')
+
+	// First expression
+	updateExpression()
+	
+	// Start & SaveId
+	stopwatchId = startStopwatch(stopwatch)
 }
 
-// Implementation
-function setUserAnswer() {
-	userAnswer = input.value
+function onStop() {
+	clearInterval(stopwatchId)
+
+	stopwatch.classList.add('timestop')
+
+	mathExpression.hidden = true
+	startButton.hidden 		= false
+	checkButton.disabled  = true
+	input.disabled     		= true
 }
 
-function checkAnswer() {
-  if (correctAnswer === +userAnswer) {
+function checkAnswer(isCorrect) {
+  if (isCorrect) {
     rightIcon.hidden = false
     input.classList.add('right-answer')
 
@@ -81,32 +130,24 @@ function checkAnswer() {
   }
 }
 
-function updateExp() {
-	const firstNumber  = getRandomMultiplier(2, 20)
-	const secondNumber = getRandomMultiplier(2, 20)
+function updateExpression() {
+	const firstNum  = getRandomMultiplier(2, 20)
+	const secondNum = getRandomMultiplier(2, 20)
 
-	renderMultiplier(firstMultiplierElem, firstNumber)
-	renderMultiplier(secondMultiplierElem, secondNumber)
+	correctAnswer = firstNum * secondNum
 
-	calculateCorrectAnswer(firstNumber, secondNumber)
+	renderExpression(firstNum, secondNum)
 	clearInput()
 }
 
-function calculateCorrectAnswer(firstNumber, secondNumber) {
-	correctAnswer = firstNumber * secondNumber
-}
-
-function renderMultiplier(elem, number) {
-	elem.textContent = number
+function renderExpression(firstNum, secondNum) {
+	mathExpression.textContent = `${firstNum} * ${secondNum}`
 }
 
 function clearInput() {
-	userAnswer  = null
 	input.value = ''
 }
 
 function getRandomMultiplier(min, max) {
 	return Math.floor(min + Math.random() * (max + 1 - min)) 
 }
-
-module.exports = getRandomMultiplier

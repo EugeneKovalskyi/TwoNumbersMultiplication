@@ -11,9 +11,16 @@ body {
   right: 0;
   margin-top: 1em;
   margin-right: 1em;
-  padding: 1em;
+  padding: 0.5em 0.8em;
   border-radius: 0.5em;
   border: 0.2em solid #888;
+}
+#stopwatch:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+#stopwatch.timestop {
+  color: #888;
 }
 
 #container {
@@ -24,13 +31,16 @@ body {
   transform: translate(-50%, 0);
 }
 
-#numbers {
+.expression-wrapper {
   font-size: 2em;
-  left: 50%;
   text-align: center;
 }
 
-#answerWrapper {
+#start {
+  cursor: pointer;
+}
+
+.answer-wrapper {
   text-align: center;
   margin-top: 2em;
 }
@@ -86,6 +96,7 @@ body {
 #check:hover {
   background-color: #ddd;
   border-color: #555;
+  cursor: pointer;
 }
 #check:active {
   color: #555;

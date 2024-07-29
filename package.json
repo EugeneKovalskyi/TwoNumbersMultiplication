@@ -15,5 +15,8 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0"
   },
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "commonjs": "^0.0.1"
+  }
 }
