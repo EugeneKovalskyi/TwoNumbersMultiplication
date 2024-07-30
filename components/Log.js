@@ -61,4 +61,4 @@ function clearLog() {
 	totalAnswersTd.textContent = '0'
 }
 
-module.exports = { addLogRow, calculateResults, clearLog, allAnswerRows }
+export{ addLogRow, calculateResults, clearLog, allAnswerRows }

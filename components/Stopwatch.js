@@ -28,4 +28,4 @@ function startStopwatch (stopwatch) {
 	return stopwatchId
 }
 
-module.exports = { startStopwatch, stopwatchTime }
+export { startStopwatch, stopwatchTime }

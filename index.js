@@ -1,5 +1,5 @@
-const { startStopwatch, stopwatchTime } = require('./components/Stopwatch.js')
-const { addLogRow, calculateResults, clearLog, allAnswerRows } = require('./components/Log.js')
+import { startStopwatch, stopwatchTime } from './components/Stopwatch.js'
+import { addLogRow, calculateResults, clearLog, allAnswerRows } from './components/Log.js'
 
 const ANSWER_LIMIT 			 = 10e5
 const MULTIPLIER_LIMIT   = 10e2
@@ -171,4 +171,4 @@ function getRandomMultiplier(min, max) {
 }
 
 // For tests
-module.exports = { getRandomMultiplier }
+export { getRandomMultiplier }
