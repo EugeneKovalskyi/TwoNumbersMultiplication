@@ -1,6 +1,6 @@
-const getRandomMultiplier = require('../MultiplyPracticeApp')
+import { getRandomMultiplier } from '../index.js';
 
-describe.only.each([
+describe.each([
 	[1, 2],
 	[1, 10],
 	[2, 100],

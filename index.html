@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Тренировка умножения 2-х чисел в уме</title>
+    <link rel="icon" href="./icons/multiply.svg" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="style/index.css"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="stopwatch">00.00</div>
+
+    <div class="log" id="logContainer">
+      <input type="button" value="x" class="log-button log-button-clear" id="clearLogButton">
+      <input type="button" value="▤" class="log-button log-button-show" id="toggleLogButton">
+      <table class="log-table" id="logTable">
+        <thead class="log-head">
+          <tr>
+            <td colspan="5" class="log-title">Log of answers</td>
+          </tr>
+          <tr>
+            <th>Is correct</th>
+            <th>Expression</th>
+            <th>Time</th>
+            <th>Received</th>
+            <th>Expected</th>
+          </tr>
+        </thead>
+        <tbody class="log-body" id="tableBody"></tbody>
+        <tfoot class="log-foot">
+          <tr>
+            <td colspan="4">Total answers</td>
+            <td id="totalAnswers">0</td>
+          </tr>
+          <tr>
+            <td colspan="4">Average time</td>
+            <td id="averageTime">0</td>
+          </tr>
+          <tr>
+            <td colspan="4">Total time</td>
+            <td id="totalTime">0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="container">
+      <div class="expression-wrapper">
+        <span id="start">START</span>
+        <span id="mathExpression"></span>
+      </div>
+
+			<hr>
+
+      <div class="answer-wrapper">
+        <span id="correctIcon">✔</span>
+        <span id="wrongIcon"  >×</span>
+				<span>Answer</span>
+        <input
+          id="input"
+          type="number"
+        />
+        <input type="button" value="Check" id="check">
+      </div>
+
+      <!-- <div id="appSettings">
+        <div>
+          <input type="checkbox" name="stopwatch" id="stopwatchCheckbox">
+          <label for="stopwatchCheckbox">Stopwatch</label>
+        </div>
+        <div>
+          <input type="checkbox" name="sound" id="soundCheckbox">
+          <label for="soundCheckbox">Sound</label>
+        </div>
+        <div>
+          <input type="checkbox" name="dark" id="darkCheckbox">
+          <label for="darkCheckbox">Dark</label>
+        </div>
+      </div>
+    </div> -->
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>

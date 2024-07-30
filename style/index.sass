@@ -1,0 +1,206 @@
+body 
+	font-family: sans-serif
+	font-size: 20px
+	color: #222
+	background-color: #1b1b1d
+	filter: invert(1)
+
+#stopwatch
+	position: fixed
+	top: 0
+	left: 50%
+	margin-top: 1em
+	padding: .5em .8em
+	border-radius: .5em
+	border: .2em solid #888
+	transform: translate(-50%, 0)
+
+	&:hover
+		border-color: #555
+		background-color: #ddd
+		cursor: pointer
+
+	&.timestop
+		color: #888
+
+.log
+	position: fixed
+	margin-top: 1em
+	right: 1em
+	border-radius: .5em
+	background-color: #e4e4e2
+	z-index: 1
+
+	.show-log
+		right: 0
+		border-radius: 0 .2em 0 .2em
+		border-top: none
+		border-right: none
+		border-left: .1em solid #888
+		border-bottom: .1em solid #888
+
+	&-visible 
+		box-shadow: -50em 50em 100em 100em rgba(255, 255, 255, 0.5)
+		border: .2em solid #555
+		padding: .7em
+
+	&-button
+		font-size: 1.7em
+		color: #888
+		position: absolute
+		padding-top: 0
+		padding-bottom: .2em
+		width: 1.5em
+		height: 1.5em
+		top: 0
+		border-radius: .2em
+		border: .1em solid #888
+		background-color: #e4e4e2
+		cursor: pointer
+		z-index: 2
+
+		&:hover
+			color: #555
+			background-color: #ddd
+			border-color: #555
+
+		&:active
+			color: #888
+			border-color: #888
+			background-color: #e4e4e2
+
+		&-show
+			right: .1em
+
+		&-clear 
+			left: 0
+			border-radius: .2em 0 .2em 0
+			border-top: none
+			border-left: none
+			border-right: .1em solid #888
+			border-bottom: .1em solid #888
+
+
+	&-table
+		font-size: .8em
+
+	&-title
+		padding: 0 0 .8em 0 !important
+		border: none 			 !important
+		font-size: 1.3em
+		font-weight: bold
+		color: #555
+
+	& th 
+		text-align: center
+		padding: 0 .5em
+		border-right: .1em solid #888
+
+		&:last-child
+			border-right: none
+
+	& td
+		text-align: center
+		padding: .5em
+		border-top: .1em solid #888
+		border-right: .1em solid #888
+
+		&:last-child
+			border-right: none
+	
+	&-foot 
+		td:first-child
+			text-align: right
+			padding-right: 1em
+			font-weight: bold
+
+.container
+	position: absolute
+	margin: 0
+	top: 10em
+	left: 50%
+	transform: translate(-50%, 0)
+
+.expression-wrapper
+	font-size: 2em
+	text-align: center
+
+#start
+	font-size: .9em
+	color: #555
+	padding-top: .2em
+	padding-left: .3em
+	padding-right: .3em
+	border-radius: .4em
+	border-top: .15em solid #888
+	border-left: .15em solid #888
+	border-right: .15em solid #888
+	cursor: pointer
+
+	&:hover
+		color: #222
+		border-color: #222
+
+	&:active
+		font-size: .85em
+
+.answer-wrapper
+	text-align: center
+	margin-top: 2em
+
+#correctIcon, #wrongIcon
+	position: absolute
+	top: 3.4em
+	font-size: 1.4em
+
+#correctIcon
+	left: .2em
+	color: #f4f
+
+#wrongIcon
+	right: .2em
+	color: #4ff
+
+#input
+	appearance: textfield
+	display: block
+	margin-top: 1em
+	font-size: 1em
+	padding: .2em
+	border-radius: .2em
+	border: .2em solid #888
+
+	&:hover
+		border-color: #555
+
+	&:focus
+		outline: none
+		border-color: #555
+		box-shadow: 0 0 .4em#555
+
+	&.right-answer
+		border-color: #f4f
+
+	&.wrong-answer
+		border-color: #4ff
+
+#check
+	font-size: 1em
+	margin-top: 2em
+	padding: 1em
+	border-radius: .5em
+	border: .2em solid #888
+	cursor: pointer
+
+	&:focus
+		outline: none
+
+	&:hover
+		color: #555
+		background-color: #ddd
+		border-color: #555
+
+	&:active
+		color: #888
+		border-color: #888
+		background-color: #e4e4e2

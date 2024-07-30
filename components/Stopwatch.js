@@ -10,6 +10,7 @@ function startStopwatch (stopwatch) {
 
     // 60 seconds limit time
     if (s === 60) {
+      cs            = 0
       stopwatchTime = 60
 
       clearInterval(stopwatchId)
@@ -20,8 +21,8 @@ function startStopwatch (stopwatch) {
       cs = 1
     }
 
-    stopwatchTime = `${ (s  > 9) ? s : '0' + s }.${ (cs  > 9) ? cs : '0' + cs }`
-    stopwatch.textContent = stopwatchTime
+    stopwatch.textContent = `${ (s  > 9) ? s : '0' + s }.${ (cs  > 9) ? cs : '0' + cs }`
+    stopwatchTime = Number(`${s}.${cs}`)
   }, 10)
 
 	return stopwatchId

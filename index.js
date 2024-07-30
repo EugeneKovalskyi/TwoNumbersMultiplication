@@ -1,23 +1,25 @@
 import { startStopwatch, stopwatchTime } from './Stopwatch.js'
+import { addLogRow, calculateResults, clearLog, allAnswerRows } from './Log.js'
 
 const ANSWER_LIMIT 			 = 10e5
 const MULTIPLIER_LIMIT   = 10e2
 const VALID_INPUT_VALUES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 													 	'Backspace', 'ArrowLeft', 'ArrowRight']
 // Elements
-const mathExpression 		 = document.getElementById('mathExpression')
-const startButton  			 = document.getElementById('start')
-const checkButton 			 = document.getElementById('check')
-const rightIcon 				 = document.getElementById('rightIcon')
-const wrongIcon					 = document.getElementById('wrongIcon')
-const stopwatch					 = document.getElementById('stopwatch')								
-const input 						 = document.getElementById('input')
+const toggleLogButton	= document.getElementById('toggleLogButton')		
+const clearLogButton	= document.getElementById('clearLogButton')
+const mathExpression 	= document.getElementById('mathExpression')
+const logContainer	  = document.getElementById('logContainer')								
+const startButton  	 	= document.getElementById('start')
+const checkButton 	 	= document.getElementById('check')
+const correctIcon 	 	= document.getElementById('correctIcon')
+const wrongIcon			 	= document.getElementById('wrongIcon')
+const stopwatch			  = document.getElementById('stopwatch')
+const logTable				= document.getElementById('logTable')
+const input 				 	= document.getElementById('input')
 
-
-const allAnswerLogs	= []
-
-let stopwatchId		  = null
-let correctAnswer   = null		
+let stopwatchId		= null
+let correctAnswer = null		
 
 window  .addEventListener('load',    onLoad)
 document.addEventListener('keydown', onKeydown)
@@ -26,11 +28,13 @@ document.addEventListener('click',   onClick)
 
 // Handlers
 function onLoad() {
-	mathExpression.hidden = true
-	rightIcon.hidden   		= true
-	wrongIcon.hidden   		= true
-	checkButton.disabled 	= true
-	input.disabled     		= true
+	clearLogButton.hidden 	= true
+	mathExpression.hidden 	= true
+	correctIcon		.hidden 	= true
+	wrongIcon			.hidden 	= true
+	logTable			.hidden 	= true
+	checkButton		.disabled = true
+	input					.disabled = true
 }
 
 function onKeydown(event) {
@@ -42,29 +46,32 @@ function onKeyup(event) {
 }
 
 function onClick(event) {
-	if (event.target === checkButton)   onCheck()
-	if (event.target === startButton)   onStart()
-	if (event.target === stopwatch)     onStop()
+	if (event.target === stopwatch)     	onStop()
+	if (event.target === startButton)   	onStart()
+	if (event.target === checkButton)   	onCheck()
+	if (event.target === clearLogButton)  clearLog()
+	if (event.target === toggleLogButton)	toggleLog()
+	
+	// Close log if click outside of log
+	if ( !logTable.hidden && !event.target.closest('#logContainer') ) toggleLog()		
 }
 
 // Implementation
 function onCheck() {
 	let expression = mathExpression.textContent
-	let userAnswer = input.value
+	let userAnswer = Number(input.value)
 	let isCorrect  = correctAnswer === +userAnswer
 
 	// Check
 	checkAnswer(isCorrect)
 
-	// PushLog 
 	if (stopwatchId) {
-		allAnswerLogs.push({
-			expression,
-			userAnswer,
-			correctAnswer,
-			isCorrect,
-			stopwatchTime,
-		})
+		// Add
+		addLogRow( { expression,
+							 	 userAnswer,
+							 	 correctAnswer,
+							 	 isCorrect,
+							 	 stopwatchTime } )
 
 		// Clear
 		clearInterval(stopwatchId)
@@ -84,10 +91,10 @@ function onKeydownInput(event) {
 }
 
 function onStart() {
-	mathExpression.hidden = false
-	startButton.hidden 		= true
-	checkButton.disabled 	= false
-	input.disabled     		= false
+	mathExpression.hidden 	= false
+	startButton		.hidden 	= true
+	checkButton		.disabled = false
+	input					.disabled = false
 
 	stopwatch.classList.remove('timestop')
 
@@ -103,19 +110,19 @@ function onStop() {
 
 	stopwatch.classList.add('timestop')
 
-	mathExpression.hidden = true
-	startButton.hidden 		= false
-	checkButton.disabled  = true
-	input.disabled     		= true
+	mathExpression.hidden 	= true
+	startButton		.hidden 	= false
+	checkButton		.disabled = true
+	input					.disabled	= true
 }
 
 function checkAnswer(isCorrect) {
   if (isCorrect) {
-    rightIcon.hidden = false
+    correctIcon.hidden = false
     input.classList.add('right-answer')
 
     setTimeout(() => {
-      rightIcon.hidden = true
+      correctIcon.hidden = true
       input.classList.remove('right-answer')
     }, 700)
 
@@ -144,6 +151,17 @@ function renderExpression(firstNum, secondNum) {
 	mathExpression.textContent = `${firstNum} * ${secondNum}`
 }
 
+function toggleLog() {
+	logTable			.hidden = !logTable.hidden
+	clearLogButton.hidden = !clearLogButton.hidden
+
+	logContainer	 .classList.toggle('log-visible')
+	toggleLogButton.classList.toggle('show-log')
+
+	// Calculation results
+	if ( !logTable.hidden && allAnswerRows.length ) calculateResults()
+}
+
 function clearInput() {
 	input.value = ''
 }
@@ -151,3 +169,6 @@ function clearInput() {
 function getRandomMultiplier(min, max) {
 	return Math.floor(min + Math.random() * (max + 1 - min)) 
 }
+
+// For tests
+export { getRandomMultiplier }
