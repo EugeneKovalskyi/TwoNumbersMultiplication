@@ -1,4 +1,4 @@
-import { getRandomMultiplier } from '../index.js';
+const { getRandomMultiplier } = require('../index.js')
 
 describe.each([
 	[1, 2],
