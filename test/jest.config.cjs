@@ -1,5 +1,6 @@
 const config = {
-	testEnvironment: "jsdom"
+	testEnvironment: "jsdom",
+	// transform: {}
 }
 
 module.exports = config

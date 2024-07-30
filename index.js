@@ -1,5 +1,5 @@
-import { startStopwatch, stopwatchTime } from './Stopwatch.js'
-import { addLogRow, calculateResults, clearLog, allAnswerRows } from './Log.js'
+import { startStopwatch, stopwatchTime } from './components/Stopwatch.js'
+import { addLogRow, calculateResults, clearLog, allAnswerRows } from './components/Log.js'
 
 const ANSWER_LIMIT 			 = 10e5
 const MULTIPLIER_LIMIT   = 10e2
