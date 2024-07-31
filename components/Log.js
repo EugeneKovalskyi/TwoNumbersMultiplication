@@ -29,8 +29,13 @@ function addLogRow( { expression,
 		userAnswerTd	 .textContent = userAnswer
 		correctAnswerTd.textContent = correctAnswer
 		
-		if (isCorrect) correctnessTd.textContent 	= '✔'
-		else 					 correctnessTd.textContent  = '×'
+		if (isCorrect) {
+			correctnessTd.textContent 	= '✔'
+			correctnessTd.classList.add('correct-log')
+		} else {
+			correctnessTd.textContent  = '×'
+			correctnessTd.classList.add('wrong-log')
+		} 
 		
 		tableBody.append(tr)
 

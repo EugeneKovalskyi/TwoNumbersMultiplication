@@ -1,3 +1,7 @@
+html, body
+	margin: 0
+	padding: 0
+
 body 
 	font-family: sans-serif
 	font-size: 20px
@@ -9,7 +13,7 @@ body
 	position: fixed
 	top: 0
 	left: 50%
-	margin-top: 1em
+	margin-top: 2em
 	padding: .5em .8em
 	border-radius: .5em
 	border: .2em solid #888
@@ -22,10 +26,13 @@ body
 
 	&.timestop
 		color: #888
+		
+.log-table-container
+	position: relative
 
 .log
 	position: fixed
-	margin-top: 1em
+	margin-top: 2em
 	right: 1em
 	border-radius: .5em
 	background-color: #e4e4e2
@@ -45,14 +52,13 @@ body
 		padding: .7em
 
 	&-button
-		font-size: 1.7em
-		color: #888
 		position: absolute
+		top: 0
 		padding-top: 0
-		padding-bottom: .2em
 		width: 1.5em
 		height: 1.5em
-		top: 0
+		font-size: 1.7em
+		color: #888
 		border-radius: .2em
 		border: .1em solid #888
 		background-color: #e4e4e2
@@ -71,15 +77,22 @@ body
 
 		&-show
 			right: .1em
+			padding-bottom: .2em
 
 		&-clear 
 			left: 0
+			font-weight: bold
 			border-radius: .2em 0 .2em 0
 			border-top: none
 			border-left: none
 			border-right: .1em solid #888
 			border-bottom: .1em solid #888
 
+	&-table-container
+		position: relative
+		max-height: 80vh
+		overflow-y: scroll
+		scrollbar-width: none	
 
 	&-table
 		font-size: .8em
@@ -107,12 +120,20 @@ body
 
 		&:last-child
 			border-right: none
+
+		&.correct-log
+			color: #f4f
+		
+		&.wrong-log
+			color: #4ff
 	
 	&-foot 
+		color: #555
+
 		td:first-child
-			text-align: right
 			padding-right: 1em
 			font-weight: bold
+			text-align: right
 
 .container
 	position: absolute
@@ -178,10 +199,10 @@ body
 		border-color: #555
 		box-shadow: 0 0 .4em#555
 
-	&.right-answer
+	&.correct-input
 		border-color: #f4f
 
-	&.wrong-answer
+	&.wrong-input
 		border-color: #4ff
 
 #check

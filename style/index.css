@@ -1,3 +1,8 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: sans-serif;
   font-size: 20px;
@@ -10,7 +15,7 @@ body {
   position: fixed;
   top: 0;
   left: 50%;
-  margin-top: 1em;
+  margin-top: 2em;
   padding: 0.5em 0.8em;
   border-radius: 0.5em;
   border: 0.2em solid #888;
@@ -25,9 +30,13 @@ body {
   color: #888;
 }
 
+.log-table-container {
+  position: relative;
+}
+
 .log {
   position: fixed;
-  margin-top: 1em;
+  margin-top: 2em;
   right: 1em;
   border-radius: 0.5em;
   background-color: #e4e4e2;
@@ -47,14 +56,13 @@ body {
   padding: 0.7em;
 }
 .log-button {
-  font-size: 1.7em;
-  color: #888;
   position: absolute;
+  top: 0;
   padding-top: 0;
-  padding-bottom: 0.2em;
   width: 1.5em;
   height: 1.5em;
-  top: 0;
+  font-size: 1.7em;
+  color: #888;
   border-radius: 0.2em;
   border: 0.1em solid #888;
   background-color: #e4e4e2;
@@ -73,14 +81,22 @@ body {
 }
 .log-button-show {
   right: 0.1em;
+  padding-bottom: 0.2em;
 }
 .log-button-clear {
   left: 0;
+  font-weight: bold;
   border-radius: 0.2em 0 0.2em 0;
   border-top: none;
   border-left: none;
   border-right: 0.1em solid #888;
   border-bottom: 0.1em solid #888;
+}
+.log-table-container {
+  position: relative;
+  max-height: 80vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 .log-table {
   font-size: 0.8em;
@@ -109,10 +125,19 @@ body {
 .log td:last-child {
   border-right: none;
 }
+.log td.correct-log {
+  color: #f4f;
+}
+.log td.wrong-log {
+  color: #4ff;
+}
+.log-foot {
+  color: #555;
+}
 .log-foot td:first-child {
-  text-align: right;
   padding-right: 1em;
   font-weight: bold;
+  text-align: right;
 }
 
 .container {
@@ -186,10 +211,10 @@ body {
   border-color: #555;
   box-shadow: 0 0 0.4em #555;
 }
-#input.right-answer {
+#input.correct-input {
   border-color: #f4f;
 }
-#input.wrong-answer {
+#input.wrong-input {
   border-color: #4ff;
 }
 

@@ -119,20 +119,20 @@ function onStop() {
 function checkAnswer(isCorrect) {
   if (isCorrect) {
     correctIcon.hidden = false
-    input.classList.add('right-answer')
+    input.classList.add('correct-input')
 
     setTimeout(() => {
       correctIcon.hidden = true
-      input.classList.remove('right-answer')
+      input.classList.remove('correct-input')
     }, 700)
 
   } else {
     wrongIcon.hidden = false
-    input.classList.add('wrong-answer')
+    input.classList.add('wrong-input')
 
     setTimeout(() => {
       wrongIcon.hidden = true
-      input.classList.remove('wrong-answer')
+      input.classList.remove('wrong-input')
     }, 700)
   }
 }

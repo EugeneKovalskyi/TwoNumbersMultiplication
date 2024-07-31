@@ -9,9 +9,10 @@ function startStopwatch (stopwatch) {
     cs++
 
     // 60 seconds limit time
-    if (s === 60) {
+    if (s === 99 && cs === 99) {
+      s             = 100
       cs            = 0
-      stopwatchTime = 60
+      stopwatchTime = 100
 
       clearInterval(stopwatchId)
     }

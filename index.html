@@ -18,37 +18,39 @@
     <div id="stopwatch">00.00</div>
 
     <div class="log" id="logContainer">
-      <input type="button" value="x" class="log-button log-button-clear" id="clearLogButton">
+      <input type="button" value="♲" class="log-button log-button-clear" id="clearLogButton">
       <input type="button" value="▤" class="log-button log-button-show" id="toggleLogButton">
-      <table class="log-table" id="logTable">
-        <thead class="log-head">
-          <tr>
-            <td colspan="5" class="log-title">Log of answers</td>
-          </tr>
-          <tr>
-            <th>Is correct</th>
-            <th>Expression</th>
-            <th>Time</th>
-            <th>Received</th>
-            <th>Expected</th>
-          </tr>
-        </thead>
-        <tbody class="log-body" id="tableBody"></tbody>
-        <tfoot class="log-foot">
-          <tr>
-            <td colspan="4">Total score</td>
-            <td id="totalAnswers">0</td>
-          </tr>
-          <tr>
-            <td colspan="4">Average time</td>
-            <td id="averageTime">0</td>
-          </tr>
-          <tr>
-            <td colspan="4">Total time</td>
-            <td id="totalTime">0</td>
-          </tr>
-        </tfoot>
-      </table>
+      <div class="log-table-container">
+        <table class="log-table" id="logTable">
+          <thead class="log-head">
+            <tr>
+              <td colspan="5" class="log-title">Log of answers</td>
+            </tr>
+            <tr>
+              <th>Is correct</th>
+              <th>Expression</th>
+              <th>Time</th>
+              <th>Received</th>
+              <th>Expected</th>
+            </tr>
+          </thead>
+          <tbody class="log-body" id="tableBody"></tbody>
+          <tfoot class="log-foot">
+            <tr>
+              <td colspan="4">Total score</td>
+              <td id="totalAnswers">0</td>
+            </tr>
+            <tr>
+              <td colspan="4">Average time</td>
+              <td id="averageTime">0</td>
+            </tr>
+            <tr>
+              <td colspan="4">Total time</td>
+              <td id="totalTime">0</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </div>
 
     <div class="container">
