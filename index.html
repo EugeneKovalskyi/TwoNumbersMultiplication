@@ -15,16 +15,75 @@
     />
   </head>
   <body>
+    <div id="settings" class="settings settings">
+      <input id="toggleSettingsButton"
+             type="button" 
+             value="⚙" 
+             class="settings__button">
+
+      <div id="settingsContainer">
+        <div class="settings__title"><span>SETTINGS</span></div>
+
+        <div id="range" class="settings__range settings__parameter">
+          <label for="rangeLeft">Range: </label>
+          <input id="rangeLeft" 
+                 type="number" 
+                 name="range"
+                 value="2" 
+                 class="settings__range-left">
+          <label for="rangeRight"> - </label>
+          <input id="rangeRight" 
+                 type="number" 
+                 name="range" 
+                 value="20"
+                 class="settings__range-right">
+        </div>
+
+        <hr>
+
+        <div class="settings__parameter">
+          <input id="stopwatchCheckbox" 
+                 type="checkbox" 
+                 name="stopwatch" checked>
+          <label for="stopwatchCheckbox">Stopwatch</label>
+        </div>
+
+        <div class="settings__parameter">
+          <input id="soundCheckbox" 
+                 type="checkbox" 
+                 name="sound" 
+                 checked>
+          <label for="soundCheckbox">Sound</label>
+        </div>
+
+        <div class="settings__parameter">
+          <input id="darkCheckbox" 
+                 type="checkbox" 
+                 name="dark" 
+                 checked>
+          <label for="darkCheckbox">Dark</label>
+        </div>
+      </div>
+    </div>
+
     <div id="stopwatch" class="stopwatch">00.00</div>
 
     <div id="log" class="log">
-      <input id="clearLogButton" type="button" value="♲" class="log__button">
-      <input id="toggleLogButton" type="button" value="▤" class="log__button">
+      <input id="clearLogButton" 
+             type="button" 
+             value="♲" 
+             class="log__button">
+      <input id="toggleLogButton" 
+             type="button" 
+             value="▤" 
+             class="log__button">
+
       <div class="log__table-container">
         <table id="logTable" class="log__table">
+
           <thead class="log__head">
             <tr>
-              <td colspan="5" class="log__title">Log of answers</td>
+              <td colspan="5" class="log__title">LOG</td>
             </tr>
             <tr>
               <th>Is correct</th>
@@ -34,7 +93,9 @@
               <th>Expected</th>
             </tr>
           </thead>
+
           <tbody id="tableBody" class="log__body"></tbody>
+          
           <tfoot class="log__foot">
             <tr>
               <td colspan="4">Total score</td>
@@ -65,30 +126,13 @@
         <span id="correctIcon">✔</span>
         <span id="wrongIcon">×</span>
         <span>Answer</span>
-        <input id="answerInput" type="number" class="number-input" />
-        <input id="check" type="button" value="Check">
+        <input id="answerInput" 
+               type="number" 
+               class="answer__input" />
+        <input id="check" 
+               type="button" 
+               value="Check">
       </div>
-
-    <!-- <div id="settings">
-        <input id="settingsButton" type="button" value="⚙" class="settings-button">
-        <div id="range">
-          <input id="rangeLeft" type="number" name="range" class="number-input">
-          <input id="rangeRight" type="number" name="range" class="number-input">
-        </div>
-        <div>
-          <input id="stopwatchCheckbox" type="checkbox" name="stopwatch">
-          <label for="stopwatchCheckbox">Stopwatch</label>
-        </div>
-        <div>
-          <input id="soundCheckbox" type="checkbox" name="sound">
-          <label for="soundCheckbox">Sound</label>
-        </div>
-        <div>
-          <input id="darkCheckbox" type="checkbox" name="dark">
-          <label for="darkCheckbox">Dark</label>
-        </div>
-      </div>
-    </div> -->
 
     <script type="module" src="index.js"></script>
   </body>

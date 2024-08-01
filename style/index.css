@@ -17,6 +17,81 @@
   color: #888;
 }
 
+.settings {
+  position: fixed;
+  margin-top: 2em;
+  left: 1em;
+  border-radius: 0.5em;
+  background-color: #e4e4e2;
+  z-index: 1;
+}
+.settings--visible {
+  box-shadow: 75em 30em 150em 150em rgba(255, 255, 255, 0.5);
+  border: 0.2em solid #555;
+  padding: 1em;
+}
+.settings__button {
+  position: absolute;
+  top: 0;
+  padding: 0 0.2em 0.1em 0.2em;
+  font-size: 1.8em;
+  color: #888;
+  border-radius: 0.2em;
+  border: 0.1em solid #888;
+  background-color: #e4e4e2;
+  cursor: pointer;
+  z-index: 2;
+}
+.settings__button:hover {
+  color: #555;
+  background-color: #ddd;
+  border-color: #555;
+}
+.settings__button:active {
+  color: #888;
+  border-color: #888;
+  background-color: #e4e4e2;
+}
+.settings__button--open {
+  left: 0;
+  border-radius: 0.2em 0 0.2em 0;
+  border-top: none;
+  border-left: none;
+  border-right: 0.1em solid #888;
+  border-bottom: 0.1em solid #888;
+}
+.settings__parameter {
+  margin-top: 0.5em;
+}
+.settings__title {
+  margin-top: 0;
+  font-weight: bold;
+  text-align: right;
+  color: #555;
+}
+.settings__range {
+  margin-top: 1.5em;
+}
+.settings__range-left, .settings__range-right {
+  appearance: textfield;
+  padding: 0.2em;
+  width: 2.3em;
+  text-align: center;
+  font-size: 0.9em;
+  border: none;
+  border-top: 0.1em solid #888;
+  border-radius: 0.2em;
+  background-color: #e4e4e2;
+}
+.settings__range-left:hover, .settings__range-right:hover {
+  border-color: #555;
+}
+.settings__range-left:focus, .settings__range-right:focus {
+  outline: none;
+  border-color: #555;
+  box-shadow: 0 0 0.4em #555;
+}
+
 .log {
   position: fixed;
   margin-top: 2em;
@@ -26,7 +101,7 @@
   z-index: 1;
 }
 .log--visible {
-  box-shadow: -50em 50em 100em 100em rgba(255, 255, 255, 0.5);
+  box-shadow: -50em 30em 150em 150em rgba(255, 255, 255, 0.5);
   border: 0.2em solid #555;
   padding: 0.7em;
 }
@@ -55,7 +130,6 @@
   background-color: #e4e4e2;
 }
 .log__button--open {
-  right: 0;
   border-radius: 0 0.2em 0 0.2em;
   border-top: none;
   border-right: none;
@@ -63,7 +137,7 @@
   border-bottom: 0.1em solid #888;
 }
 .log #toggleLogButton {
-  right: 0.1em;
+  right: 0;
   padding-bottom: 0.2em;
 }
 .log #clearLogButton {
@@ -85,9 +159,8 @@
   font-size: 0.8em;
 }
 .log__title {
-  padding: 0 0 0.8em 0 !important;
+  padding: 0 0 1.5em 0 !important;
   border: none !important;
-  font-size: 1.3em;
   font-weight: bold;
   color: #555;
 }
@@ -108,10 +181,10 @@
 .log td:last-child {
   border-right: none;
 }
-.log td.correct-log {
+.log .td--correct {
   color: #f4f;
 }
-.log td.wrong-log {
+.log .td--wrong {
   color: #4ff;
 }
 .log__foot {
@@ -130,7 +203,7 @@ html, body {
 
 body {
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 14px;
   color: #222;
   background-color: #1b1b1d;
   filter: invert(1);
@@ -173,6 +246,30 @@ body {
   text-align: center;
   margin-top: 2em;
 }
+.answer__input {
+  appearance: textfield;
+  display: block;
+  margin: 1em auto 0 auto;
+  padding: 0.2em;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 0.2em;
+  border: 0.2em solid #888;
+}
+.answer__input:hover {
+  border-color: #555;
+}
+.answer__input:focus {
+  outline: none;
+  border-color: #555;
+  box-shadow: 0 0 0.4em #555;
+}
+.answer__input--correct {
+  border-color: #f4f !important;
+}
+.answer__input--wrong {
+  border-color: #4ff !important;
+}
 
 #correctIcon, #wrongIcon {
   position: absolute;
@@ -188,33 +285,6 @@ body {
 #wrongIcon {
   right: 0.2em;
   color: #4ff;
-}
-
-#answerInput {
-  display: block;
-  margin: 1em auto 0 auto;
-}
-
-.number-input {
-  appearance: textfield;
-  font-size: 1em;
-  padding: 0.2em;
-  border-radius: 0.2em;
-  border: 0.2em solid #888;
-}
-.number-input:hover {
-  border-color: #555;
-}
-.number-input:focus {
-  outline: none;
-  border-color: #555;
-  box-shadow: 0 0 0.4em #555;
-}
-.number-input.correct-input {
-  border-color: #f4f;
-}
-.number-input.wrong-input {
-  border-color: #4ff;
 }
 
 #check {

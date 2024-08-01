@@ -1,0 +1,73 @@
+.settings
+	position: fixed
+	margin-top: 2em
+	left: 1em
+	border-radius: .5em
+	background-color: #e4e4e2
+	z-index: 1
+
+	&--visible 
+		box-shadow: 75em 30em 150em 150em rgba(255, 255, 255, 0.5)
+		border: .2em solid #555
+		padding: 1em	
+	
+	&__button
+		position: absolute
+		top: 0
+		padding: 0 .2em .1em .2em
+		font-size: 1.8em
+		color: #888
+		border-radius: .2em
+		border: .1em solid #888
+		background-color: #e4e4e2
+		cursor: pointer
+		z-index: 2
+
+		&:hover
+			color: #555
+			background-color: #ddd
+			border-color: #555
+
+		&:active
+			color: #888
+			border-color: #888
+			background-color: #e4e4e2
+
+		&--open
+			left: 0
+			border-radius: .2em 0 .2em 0
+			border-top: none
+			border-left: none
+			border-right: .1em solid #888
+			border-bottom: .1em solid #888
+
+	&__parameter
+		margin-top: .5em
+
+	&__title
+		margin-top: 0
+		font-weight: bold
+		text-align: right
+		color: #555
+
+	&__range 
+		margin-top: 1.5em
+		
+		&-left, &-right
+			appearance: textfield // remove arrows
+			padding: .2em
+			width: 2.3em
+			text-align: center
+			font-size: .9em
+			border: none
+			border-top: .1em solid #888
+			border-radius: .2em
+			background-color: #e4e4e2
+
+			&:hover
+				border-color: #555
+
+			&:focus
+				outline: none
+				border-color: #555
+				box-shadow: 0 0 .4em#555

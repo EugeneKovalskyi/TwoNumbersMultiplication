@@ -47,6 +47,30 @@ body
 	text-align: center
 	margin-top: 2em
 
+	&__input
+		appearance: textfield // remove arrows
+		display: block
+		margin: 1em auto 0 auto
+		padding: .2em
+		font-size: 1em
+		text-align: center
+		border-radius: .2em
+		border: .2em solid #888
+
+		&:hover
+			border-color: #555
+
+		&:focus
+			outline: none
+			border-color: #555
+			box-shadow: 0 0 .4em#555
+
+		&--correct
+			border-color: #f4f !important
+
+		&--wrong
+			border-color: #4ff !important
+
 #correctIcon, #wrongIcon
 	position: absolute
 	top: 3.4em
@@ -59,31 +83,6 @@ body
 #wrongIcon
 	right: .2em
 	color: #4ff
-
-#answerInput
-	display: block
-	margin: 1em auto 0 auto
-
-.number-input
-	appearance: textfield // remove arrows
-	font-size: 1em
-	padding: .2em
-	border-radius: .2em
-	border: .2em solid #888
-
-	&:hover
-		border-color: #555
-
-	&:focus
-		outline: none
-		border-color: #555
-		box-shadow: 0 0 .4em#555
-
-	&.correct-input
-		border-color: #f4f
-
-	&.wrong-input
-		border-color: #4ff
 
 #check
 	font-size: 1em

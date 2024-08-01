@@ -1,3 +1,4 @@
+// Elements
 const tableBody 	    = document.getElementById('tableBody')
 const totalAnswersTd  = document.getElementById('totalAnswers')
 const averageTimeTd   = document.getElementById('averageTime')
@@ -35,10 +36,10 @@ function addLogRow( { expression,
 		
 		if (isCorrect) {
 			correctnessTd.textContent = '✔'
-			correctnessTd.classList.add('correct-log')
+			correctnessTd.classList.add('td--correct')
 		} else {
 			correctnessTd.textContent = '×'
-			correctnessTd.classList.add('wrong-log')
+			correctnessTd.classList.add('td--wrong')
 		} 
 		
 		tableBody.append(tr)

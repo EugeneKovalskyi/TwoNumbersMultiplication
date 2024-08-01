@@ -1,7 +1,7 @@
 let stopwatchTime = null
 
 function startStopwatch (stopwatch) {
-  // Seconds and centiseconds
+  // Seconds and centi-seconds
   let s  = 0
   let cs = 1
 
