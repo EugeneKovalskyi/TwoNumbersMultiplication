@@ -15,16 +15,16 @@
     />
   </head>
   <body>
-    <div id="stopwatch">00.00</div>
+    <div id="stopwatch" class="stopwatch">00.00</div>
 
-    <div class="log" id="logContainer">
-      <input type="button" value="♲" class="log-button log-button-clear" id="clearLogButton">
-      <input type="button" value="▤" class="log-button log-button-show" id="toggleLogButton">
-      <div class="log-table-container">
-        <table class="log-table" id="logTable">
-          <thead class="log-head">
+    <div id="log" class="log">
+      <input id="clearLogButton" type="button" value="♲" class="log__button">
+      <input id="toggleLogButton" type="button" value="▤" class="log__button">
+      <div class="log__table-container">
+        <table id="logTable" class="log__table">
+          <thead class="log__head">
             <tr>
-              <td colspan="5" class="log-title">Log of answers</td>
+              <td colspan="5" class="log__title">Log of answers</td>
             </tr>
             <tr>
               <th>Is correct</th>
@@ -34,8 +34,8 @@
               <th>Expected</th>
             </tr>
           </thead>
-          <tbody class="log-body" id="tableBody"></tbody>
-          <tfoot class="log-foot">
+          <tbody id="tableBody" class="log__body"></tbody>
+          <tfoot class="log__foot">
             <tr>
               <td colspan="4">Total score</td>
               <td id="totalAnswers">0</td>
@@ -54,35 +54,37 @@
     </div>
 
     <div class="container">
-      <div class="expression-wrapper">
+      <div class="math-expression">
         <span id="start">START</span>
         <span id="mathExpression"></span>
       </div>
 
 			<hr>
 
-      <div class="answer-wrapper">
+      <div class="answer">
         <span id="correctIcon">✔</span>
-        <span id="wrongIcon"  >×</span>
-				<span>Answer</span>
-        <input
-          id="input"
-          type="number"
-        />
-        <input type="button" value="Check" id="check">
+        <span id="wrongIcon">×</span>
+        <span>Answer</span>
+        <input id="answerInput" type="number" class="number-input" />
+        <input id="check" type="button" value="Check">
       </div>
 
-      <!-- <div id="appSettings">
+    <!-- <div id="settings">
+        <input id="settingsButton" type="button" value="⚙" class="settings-button">
+        <div id="range">
+          <input id="rangeLeft" type="number" name="range" class="number-input">
+          <input id="rangeRight" type="number" name="range" class="number-input">
+        </div>
         <div>
-          <input type="checkbox" name="stopwatch" id="stopwatchCheckbox">
+          <input id="stopwatchCheckbox" type="checkbox" name="stopwatch">
           <label for="stopwatchCheckbox">Stopwatch</label>
         </div>
         <div>
-          <input type="checkbox" name="sound" id="soundCheckbox">
+          <input id="soundCheckbox" type="checkbox" name="sound">
           <label for="soundCheckbox">Sound</label>
         </div>
         <div>
-          <input type="checkbox" name="dark" id="darkCheckbox">
+          <input id="darkCheckbox" type="checkbox" name="dark">
           <label for="darkCheckbox">Dark</label>
         </div>
       </div>

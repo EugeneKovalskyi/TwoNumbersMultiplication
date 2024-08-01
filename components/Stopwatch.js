@@ -23,7 +23,7 @@ function startStopwatch (stopwatch) {
     }
 
     stopwatch.textContent = `${ (s  > 9) ? s : '0' + s }.${ (cs  > 9) ? cs : '0' + cs }`
-    stopwatchTime = Number(`${s}.${cs}`)
+    stopwatchTime         = Number(`${s}.${cs}`)
   }, 10)
 
 	return stopwatchId

@@ -1,3 +1,7 @@
+@use 'components/Stopwatch'
+@use 'components/Settings'
+@use 'components/Log'
+	
 html, body
 	margin: 0
 	padding: 0
@@ -9,132 +13,6 @@ body
 	background-color: #1b1b1d
 	filter: invert(1)
 
-#stopwatch
-	position: fixed
-	top: 0
-	left: 50%
-	margin-top: 2em
-	padding: .5em .8em
-	border-radius: .5em
-	border: .2em solid #888
-	transform: translate(-50%, 0)
-
-	&:hover
-		border-color: #555
-		background-color: #ddd
-		cursor: pointer
-
-	&.timestop
-		color: #888
-		
-.log-table-container
-	position: relative
-
-.log
-	position: fixed
-	margin-top: 2em
-	right: 1em
-	border-radius: .5em
-	background-color: #e4e4e2
-	z-index: 1
-
-	.show-log
-		right: 0
-		border-radius: 0 .2em 0 .2em
-		border-top: none
-		border-right: none
-		border-left: .1em solid #888
-		border-bottom: .1em solid #888
-
-	&-visible 
-		box-shadow: -50em 50em 100em 100em rgba(255, 255, 255, 0.5)
-		border: .2em solid #555
-		padding: .7em
-
-	&-button
-		position: absolute
-		top: 0
-		padding-top: 0
-		width: 1.5em
-		height: 1.5em
-		font-size: 1.7em
-		color: #888
-		border-radius: .2em
-		border: .1em solid #888
-		background-color: #e4e4e2
-		cursor: pointer
-		z-index: 2
-
-		&:hover
-			color: #555
-			background-color: #ddd
-			border-color: #555
-
-		&:active
-			color: #888
-			border-color: #888
-			background-color: #e4e4e2
-
-		&-show
-			right: .1em
-			padding-bottom: .2em
-
-		&-clear 
-			left: 0
-			font-weight: bold
-			border-radius: .2em 0 .2em 0
-			border-top: none
-			border-left: none
-			border-right: .1em solid #888
-			border-bottom: .1em solid #888
-
-	&-table-container
-		position: relative
-		max-height: 80vh
-		overflow-y: scroll
-		scrollbar-width: none	
-
-	&-table
-		font-size: .8em
-
-	&-title
-		padding: 0 0 .8em 0 !important
-		border: none 			 !important
-		font-size: 1.3em
-		font-weight: bold
-		color: #555
-
-	& th 
-		text-align: center
-		padding: 0 .5em
-		border-right: .1em solid #888
-
-		&:last-child
-			border-right: none
-
-	& td
-		text-align: center
-		padding: .5em
-		border-top: .1em solid #888
-		border-right: .1em solid #888
-
-		&:last-child
-			border-right: none
-
-		&.correct-log
-			color: #f4f
-		
-		&.wrong-log
-			color: #4ff
-	
-	&-foot 
-		color: #555
-
-		td:first-child
-			padding-right: 1em
-			font-weight: bold
-			text-align: right
-
 .container
 	position: absolute
 	margin: 0
@@ -142,9 +20,9 @@ body
 	left: 50%
 	transform: translate(-50%, 0)
 
-.expression-wrapper
-	font-size: 2em
-	text-align: center
+.math-expression
+		font-size: 2em
+		text-align: center
 
 #start
 	font-size: .9em
@@ -165,7 +43,7 @@ body
 	&:active
 		font-size: .85em
 
-.answer-wrapper
+.answer
 	text-align: center
 	margin-top: 2em
 
@@ -182,10 +60,12 @@ body
 	right: .2em
 	color: #4ff
 
-#input
-	appearance: textfield
+#answerInput
 	display: block
-	margin-top: 1em
+	margin: 1em auto 0 auto
+
+.number-input
+	appearance: textfield // remove arrows
 	font-size: 1em
 	padding: .2em
 	border-radius: .2em

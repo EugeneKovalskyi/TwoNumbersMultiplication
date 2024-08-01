@@ -1,17 +1,4 @@
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: sans-serif;
-  font-size: 20px;
-  color: #222;
-  background-color: #1b1b1d;
-  filter: invert(1);
-}
-
-#stopwatch {
+.stopwatch {
   position: fixed;
   top: 0;
   left: 50%;
@@ -21,17 +8,13 @@ body {
   border: 0.2em solid #888;
   transform: translate(-50%, 0);
 }
-#stopwatch:hover {
+.stopwatch:hover {
   border-color: #555;
   background-color: #ddd;
   cursor: pointer;
 }
-#stopwatch.timestop {
+.stopwatch--timestop {
   color: #888;
-}
-
-.log-table-container {
-  position: relative;
 }
 
 .log {
@@ -42,20 +25,12 @@ body {
   background-color: #e4e4e2;
   z-index: 1;
 }
-.log .show-log {
-  right: 0;
-  border-radius: 0 0.2em 0 0.2em;
-  border-top: none;
-  border-right: none;
-  border-left: 0.1em solid #888;
-  border-bottom: 0.1em solid #888;
-}
-.log-visible {
+.log--visible {
   box-shadow: -50em 50em 100em 100em rgba(255, 255, 255, 0.5);
   border: 0.2em solid #555;
   padding: 0.7em;
 }
-.log-button {
+.log__button {
   position: absolute;
   top: 0;
   padding-top: 0;
@@ -69,21 +44,29 @@ body {
   cursor: pointer;
   z-index: 2;
 }
-.log-button:hover {
+.log__button:hover {
   color: #555;
   background-color: #ddd;
   border-color: #555;
 }
-.log-button:active {
+.log__button:active {
   color: #888;
   border-color: #888;
   background-color: #e4e4e2;
 }
-.log-button-show {
+.log__button--open {
+  right: 0;
+  border-radius: 0 0.2em 0 0.2em;
+  border-top: none;
+  border-right: none;
+  border-left: 0.1em solid #888;
+  border-bottom: 0.1em solid #888;
+}
+.log #toggleLogButton {
   right: 0.1em;
   padding-bottom: 0.2em;
 }
-.log-button-clear {
+.log #clearLogButton {
   left: 0;
   font-weight: bold;
   border-radius: 0.2em 0 0.2em 0;
@@ -92,16 +75,16 @@ body {
   border-right: 0.1em solid #888;
   border-bottom: 0.1em solid #888;
 }
-.log-table-container {
+.log__table-container {
   position: relative;
   max-height: 80vh;
   overflow-y: scroll;
   scrollbar-width: none;
 }
-.log-table {
+.log__table {
   font-size: 0.8em;
 }
-.log-title {
+.log__title {
   padding: 0 0 0.8em 0 !important;
   border: none !important;
   font-size: 1.3em;
@@ -131,13 +114,26 @@ body {
 .log td.wrong-log {
   color: #4ff;
 }
-.log-foot {
+.log__foot {
   color: #555;
 }
-.log-foot td:first-child {
+.log__foot td:first-child {
   padding-right: 1em;
   font-weight: bold;
   text-align: right;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #222;
+  background-color: #1b1b1d;
+  filter: invert(1);
 }
 
 .container {
@@ -148,7 +144,7 @@ body {
   transform: translate(-50%, 0);
 }
 
-.expression-wrapper {
+.math-expression {
   font-size: 2em;
   text-align: center;
 }
@@ -173,7 +169,7 @@ body {
   font-size: 0.85em;
 }
 
-.answer-wrapper {
+.answer {
   text-align: center;
   margin-top: 2em;
 }
@@ -194,27 +190,30 @@ body {
   color: #4ff;
 }
 
-#input {
-  appearance: textfield;
+#answerInput {
   display: block;
-  margin-top: 1em;
+  margin: 1em auto 0 auto;
+}
+
+.number-input {
+  appearance: textfield;
   font-size: 1em;
   padding: 0.2em;
   border-radius: 0.2em;
   border: 0.2em solid #888;
 }
-#input:hover {
+.number-input:hover {
   border-color: #555;
 }
-#input:focus {
+.number-input:focus {
   outline: none;
   border-color: #555;
   box-shadow: 0 0 0.4em #555;
 }
-#input.correct-input {
+.number-input.correct-input {
   border-color: #f4f;
 }
-#input.wrong-input {
+.number-input.wrong-input {
   border-color: #4ff;
 }
 

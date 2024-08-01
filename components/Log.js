@@ -1,7 +1,11 @@
-const tableBody 	   = document.getElementById('tableBody')
-const totalAnswersTd = document.getElementById('totalAnswers')
-const averageTimeTd  = document.getElementById('averageTime')
-const totalTimeTd 	 = document.getElementById('totalTime')				
+const tableBody 	    = document.getElementById('tableBody')
+const totalAnswersTd  = document.getElementById('totalAnswers')
+const averageTimeTd   = document.getElementById('averageTime')
+const totalTimeTd 	  = document.getElementById('totalTime')		
+const toggleLogButton	= document.getElementById('toggleLogButton')		
+const clearLogButton	= document.getElementById('clearLogButton')		
+const log	  					= document.getElementById('log')				
+const logTable				= document.getElementById('logTable')
 
 const allAnswerRows  = []
 
@@ -24,16 +28,16 @@ function addLogRow( { expression,
 						 userAnswerTd,
 						 correctAnswerTd )
 		
-		timeTd				 .textContent = stopwatchTime
-		expressionTd	 .textContent = expression
-		userAnswerTd	 .textContent = userAnswer
+		timeTd.textContent 					= stopwatchTime
+		expressionTd.textContent 		= expression
+		userAnswerTd.textContent 		= userAnswer
 		correctAnswerTd.textContent = correctAnswer
 		
 		if (isCorrect) {
-			correctnessTd.textContent 	= '✔'
+			correctnessTd.textContent = '✔'
 			correctnessTd.classList.add('correct-log')
 		} else {
-			correctnessTd.textContent  = '×'
+			correctnessTd.textContent = '×'
 			correctnessTd.classList.add('wrong-log')
 		} 
 		
@@ -53,17 +57,28 @@ function calculateResults() {
 			if (row.isCorrect) totalCorrectAnswers++
 		}
 
-		totalTimeTd		.textContent = totalTime.toFixed(2)
-		averageTimeTd	.textContent = ( totalTime / allAnswerRows.length ).toFixed(2)
+		totalTimeTd.textContent 	 = totalTime.toFixed(2)
+		averageTimeTd.textContent  = ( totalTime / allAnswerRows.length ).toFixed(2)
 		totalAnswersTd.textContent = `${totalCorrectAnswers} / ${allAnswerRows.length}`
 }
 
 function clearLog() {
-	allAnswerRows	.length  		 = 0
-	tableBody			.textContent = ''
-	totalTimeTd		.textContent = '0'
-	averageTimeTd	.textContent = '0'
+	allAnswerRows.length  		 = 0
+	tableBody.textContent 		 = ''
+	totalTimeTd.textContent 	 = '0'
+	averageTimeTd.textContent  = '0'
 	totalAnswersTd.textContent = '0'
 }
 
-export{ addLogRow, calculateResults, clearLog, allAnswerRows }
+function toggleLog() {
+	logTable.hidden 			= !logTable.hidden
+	clearLogButton.hidden = !clearLogButton.hidden
+
+	log.classList.toggle('log--visible')
+	toggleLogButton.classList.toggle('log__button--open')
+
+	// Calculation results
+	if ( !logTable.hidden && allAnswerRows.length ) calculateResults()
+}
+
+export{ addLogRow, clearLog, toggleLog }

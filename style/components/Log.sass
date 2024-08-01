@@ -1,0 +1,104 @@
+.log
+	position: fixed
+	margin-top: 2em
+	right: 1em
+	border-radius: .5em
+	background-color: #e4e4e2
+	z-index: 1
+
+	&--visible 
+		box-shadow: -50em 50em 100em 100em rgba(255, 255, 255, 0.5)
+		border: .2em solid #555
+		padding: .7em
+
+	&__button
+		position: absolute
+		top: 0
+		padding-top: 0
+		width: 1.5em
+		height: 1.5em
+		font-size: 1.7em
+		color: #888
+		border-radius: .2em
+		border: .1em solid #888
+		background-color: #e4e4e2
+		cursor: pointer
+		z-index: 2
+
+		&:hover
+			color: #555
+			background-color: #ddd
+			border-color: #555
+
+		&:active
+			color: #888
+			border-color: #888
+			background-color: #e4e4e2
+
+		&--open
+			right: 0
+			border-radius: 0 .2em 0 .2em
+			border-top: none
+			border-right: none
+			border-left: .1em solid #888
+			border-bottom: .1em solid #888
+
+	#toggleLogButton
+		right: .1em
+		padding-bottom: .2em
+
+	#clearLogButton
+		left: 0
+		font-weight: bold
+		border-radius: .2em 0 .2em 0
+		border-top: none
+		border-left: none
+		border-right: .1em solid #888
+		border-bottom: .1em solid #888
+
+	&__table-container
+		position: relative
+		max-height: 80vh
+		overflow-y: scroll
+		scrollbar-width: none	
+
+	&__table
+		font-size: .8em
+
+	&__title
+		padding: 0 0 .8em 0 !important
+		border: none 			 !important
+		font-size: 1.3em
+		font-weight: bold
+		color: #555
+
+	& th 
+		text-align: center
+		padding: 0 .5em
+		border-right: .1em solid #888
+
+		&:last-child
+			border-right: none
+
+	& td
+		text-align: center
+		padding: .5em
+		border-top: .1em solid #888
+		border-right: .1em solid #888
+
+		&:last-child
+			border-right: none
+
+		&.correct-log
+			color: #f4f
+		
+		&.wrong-log
+			color: #4ff
+	
+	&__foot 
+		color: #555
+
+		td:first-child
+			padding-right: 1em
+			font-weight: bold
+			text-align: right
