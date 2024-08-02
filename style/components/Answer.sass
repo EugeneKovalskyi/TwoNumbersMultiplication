@@ -1,3 +1,5 @@
+@use '../variables' as *
+	
 .answer
 	text-align: center
 	margin-top: 2em
@@ -10,21 +12,21 @@
 		font-size: 1em
 		text-align: center
 		border-radius: .2em
-		border: .2em solid #888
+		border: $border-normal
 
 		&:hover
-			border-color: #555
+			border-color: $color-grey-dark
 
 		&:focus
 			outline: none
-			border-color: #555
-			box-shadow: 0 0 .4em#555
+			border-color: $color-grey-dark
+			box-shadow: 0 0 .4em $color-grey-dark
 
 	&__input--correct
-		border-color: #f4f !important
+		border-color: $color-correct !important
 
 	&__input--wrong
-		border-color: #4ff !important
+		border-color: $color-wrong !important
 
 #correctIcon, #wrongIcon
 	position: absolute
@@ -33,29 +35,29 @@
 
 #correctIcon
 	left: .2em
-	color: #f4f
+	color: $color-correct
 
 #wrongIcon
 	right: .2em
-	color: #4ff
+	color: $color-wrong
 
 #check
 	font-size: 1em
 	margin-top: 2em
 	padding: 1em
 	border-radius: .5em
-	border: .2em solid #888
+	border: $border-normal
 	cursor: pointer
 
 	&:focus
 		outline: none
 
 	&:hover
-		color: #555
-		background-color: #ddd
-		border-color: #555
+		color: $color-grey-dark
+		border-color: $color-grey-dark
+		background-color: $bgc-white-dark
 
 	&:active
-		color: #888
-		border-color: #888
-		background-color: #e4e4e2
+		color: $color-grey-light
+		border-color: $color-grey-light
+		background-color: $bgc-white-dark

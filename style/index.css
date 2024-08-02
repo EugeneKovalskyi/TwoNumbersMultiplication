@@ -22,7 +22,7 @@
   margin-top: 2em;
   left: 1em;
   border-radius: 0.5em;
-  background-color: #e4e4e2;
+  background-color: #ddd;
   z-index: 1;
 }
 .settings__button {
@@ -33,7 +33,7 @@
   color: #888;
   border-radius: 0.2em;
   border: 0.1em solid #888;
-  background-color: #e4e4e2;
+  background-color: #ddd;
   cursor: pointer;
   z-index: 2;
 }
@@ -45,7 +45,7 @@
 .settings__button:active {
   color: #888;
   border-color: #888;
-  background-color: #e4e4e2;
+  background-color: #ddd;
 }
 .settings__button--open {
   left: 0;
@@ -76,7 +76,7 @@
   border: none;
   border-top: 0.1em solid #888;
   border-radius: 0.2em;
-  background-color: #e4e4e2;
+  background-color: #ddd;
 }
 .settings__range-left:hover, .settings__range-right:hover {
   border-color: #555;
@@ -151,13 +151,13 @@
 }
 #check:hover {
   color: #555;
-  background-color: #ddd;
   border-color: #555;
+  background-color: #ddd;
 }
 #check:active {
   color: #888;
   border-color: #888;
-  background-color: #e4e4e2;
+  background-color: #ddd;
 }
 
 .log {
@@ -165,7 +165,7 @@
   margin-top: 2em;
   right: 1em;
   border-radius: 0.5em;
-  background-color: #e4e4e2;
+  background-color: #ddd;
   z-index: 1;
 }
 .log__button {
@@ -178,19 +178,19 @@
   color: #888;
   border-radius: 0.2em;
   border: 0.1em solid #888;
-  background-color: #e4e4e2;
+  background-color: #ddd;
   cursor: pointer;
   z-index: 2;
 }
 .log__button:hover {
   color: #555;
-  background-color: #ddd;
   border-color: #555;
+  background-color: #ddd;
 }
 .log__button:active {
   color: #888;
   border-color: #888;
-  background-color: #e4e4e2;
+  background-color: #ddd;
 }
 .log__button--open {
   border-radius: 0 0.2em 0 0.2em;

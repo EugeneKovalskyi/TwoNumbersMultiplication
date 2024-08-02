@@ -1,3 +1,5 @@
+@use '../variables' as *
+	
 .stopwatch
 	position: fixed
 	top: 0
@@ -5,13 +7,13 @@
 	margin-top: 2em
 	padding: .5em .8em
 	border-radius: .5em
-	border: .2em solid #888
+	border: $border-normal
 	transform: translate(-50%, 0)
 
 	&:hover
-		border-color: #555
-		background-color: #ddd
+		border-color: $color-grey-dark
+		background-color: $bgc-white-dark
 		cursor: pointer
 
 	&--timestop
-		color: #888
+		color: $color-grey-light

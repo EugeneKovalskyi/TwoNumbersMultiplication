@@ -1,9 +1,11 @@
+@use '../variables' as *
+	
 .log
 	position: fixed
 	margin-top: 2em
 	right: 1em
 	border-radius: .5em
-	background-color: #e4e4e2
+	background-color: $bgc-white-dark
 	z-index: 1
 
 	&__button
@@ -13,29 +15,29 @@
 		width: 1.5em
 		height: 1.5em
 		font-size: 1.7em
-		color: #888
+		color: $color-grey-light
 		border-radius: .2em
-		border: .1em solid #888
-		background-color: #e4e4e2
+		border: $border-thin
+		background-color: $bgc-white-dark
 		cursor: pointer
 		z-index: 2
 
 		&:hover
-			color: #555
-			background-color: #ddd
-			border-color: #555
+			color: $color-grey-dark
+			border-color: $color-grey-dark
+			background-color: $bgc-white-dark
 
 		&:active
-			color: #888
-			border-color: #888
-			background-color: #e4e4e2
+			color: $color-grey-light
+			border-color: $color-grey-light
+			background-color: $bgc-white-dark
 
 	&__button--open
 		border-radius: 0 .2em 0 .2em
 		border-top: none
 		border-right: none
-		border-left: .1em solid #888
-		border-bottom: .1em solid #888
+		border-left: $border-thin
+		border-bottom: $border-thin
 
 	#toggleLogButton
 		right: 0
@@ -47,8 +49,8 @@
 		border-radius: .2em 0 .2em 0
 		border-top: none
 		border-left: none
-		border-right: .1em solid #888
-		border-bottom: .1em solid #888
+		border-right: $border-thin
+		border-bottom: $border-thin
 
 	&__table-container
 		position: relative
@@ -63,12 +65,12 @@
 		padding: 0 0 1.5em 0 !important
 		border: none 			   !important
 		font-weight: bold
-		color: #555
+		color: $color-grey-dark
 
 	& th 
 		text-align: center
 		padding: 0 .5em
-		border-right: .1em solid #888
+		border-right: $border-thin
 
 		&:last-child
 			border-right: none
@@ -76,20 +78,20 @@
 	& td
 		text-align: center
 		padding: .5em
-		border-top: .1em solid #888
-		border-right: .1em solid #888
+		border-top: $border-thin
+		border-right: $border-thin
 
 		&:last-child
 			border-right: none
 
 	.td--correct
-			color: #f4f
+			color: $color-correct
 		
 	.td--wrong
-			color: #4ff
+			color: $color-wrong
 	
 	&__foot 
-		color: #555
+		color: $color-grey-dark
 
 		td:first-child
 			padding-right: 1em
@@ -98,5 +100,5 @@
 
 .log--visible 
 	box-shadow: -50em 30em 150em 150em rgba(255, 255, 255, 0.5)
-	border: .2em solid #555
+	border: .2em solid $color-grey-dark
 	padding: .7em

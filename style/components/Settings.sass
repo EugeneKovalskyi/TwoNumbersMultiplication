@@ -1,9 +1,11 @@
+@use '../variables' as *
+	
 .settings
 	position: fixed
 	margin-top: 2em
 	left: 1em
 	border-radius: .5em
-	background-color: #e4e4e2
+	background-color: $bgc-white-dark
 	z-index: 1
 	
 	&__button
@@ -11,30 +13,30 @@
 		top: 0
 		padding: 0 .2em .1em .2em
 		font-size: 1.8em
-		color: #888
+		color: $color-grey-light
 		border-radius: .2em
-		border: .1em solid #888
-		background-color: #e4e4e2
+		border: $border-thin
+		background-color: $bgc-white-dark
 		cursor: pointer
 		z-index: 2
 
 		&:hover
-			color: #555
-			background-color: #ddd
-			border-color: #555
+			color: $color-grey-dark
+			background-color: $bgc-white-dark
+			border-color: $color-grey-dark
 
 		&:active
-			color: #888
-			border-color: #888
-			background-color: #e4e4e2
+			color: $color-grey-light
+			border-color: $color-grey-light
+			background-color: $bgc-white-dark
 
 		&--open
 			left: 0
 			border-radius: .2em 0 .2em 0
 			border-top: none
 			border-left: none
-			border-right: .1em solid #888
-			border-bottom: .1em solid #888
+			border-right: $border-thin
+			border-bottom: $border-thin
 
 	&__parameter
 		margin-top: .5em
@@ -43,7 +45,7 @@
 		margin-top: 0
 		font-weight: bold
 		text-align: right
-		color: #555
+		color: $color-grey-dark
 
 	&__range 
 		margin-top: 1.5em
@@ -55,19 +57,19 @@
 			text-align: center
 			font-size: .9em
 			border: none
-			border-top: .1em solid #888
+			border-top: $border-thin
 			border-radius: .2em
-			background-color: #e4e4e2
+			background-color: $bgc-white-dark
 
 			&:hover
-				border-color: #555
+				border-color: $color-grey-dark
 
 			&:focus
 				outline: none
-				border-color: #555
-				box-shadow: 0 0 .4em#555
+				border-color: $color-grey-dark
+				box-shadow: 0 0 .4em$color-grey-dark
 		
 .settings--visible 
 	box-shadow: 75em 30em 150em 150em rgba(255, 255, 255, 0.5)
-	border: .2em solid #555
+	border: .2em solid $color-grey-dark
 	padding: 1em	
