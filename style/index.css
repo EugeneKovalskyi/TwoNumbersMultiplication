@@ -313,6 +313,7 @@ body {
   top: 10em;
   left: 50%;
   transform: translate(-50%, 0);
+  padding-bottom: 0.5em;
 }
 
 .math-expression {
@@ -338,6 +339,22 @@ body {
 }
 #start:active {
   font-size: 0.85em;
+}
+
+@media (max-width: 522px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media (max-width: 418px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media (max-width: 367px) {
+  body {
+    font-size: 12px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
