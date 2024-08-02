@@ -1,0 +1,61 @@
+.answer
+	text-align: center
+	margin-top: 2em
+
+	&__input
+		appearance: textfield // remove arrows
+		display: block
+		margin: 1em auto 0 auto
+		padding: .2em
+		font-size: 1em
+		text-align: center
+		border-radius: .2em
+		border: .2em solid #888
+
+		&:hover
+			border-color: #555
+
+		&:focus
+			outline: none
+			border-color: #555
+			box-shadow: 0 0 .4em#555
+
+	&__input--correct
+		border-color: #f4f !important
+
+	&__input--wrong
+		border-color: #4ff !important
+
+#correctIcon, #wrongIcon
+	position: absolute
+	top: 3.4em
+	font-size: 1.4em
+
+#correctIcon
+	left: .2em
+	color: #f4f
+
+#wrongIcon
+	right: .2em
+	color: #4ff
+
+#check
+	font-size: 1em
+	margin-top: 2em
+	padding: 1em
+	border-radius: .5em
+	border: .2em solid #888
+	cursor: pointer
+
+	&:focus
+		outline: none
+
+	&:hover
+		color: #555
+		background-color: #ddd
+		border-color: #555
+
+	&:active
+		color: #888
+		border-color: #888
+		background-color: #e4e4e2

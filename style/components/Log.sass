@@ -6,11 +6,6 @@
 	background-color: #e4e4e2
 	z-index: 1
 
-	&--visible 
-		box-shadow: -50em 30em 150em 150em rgba(255, 255, 255, 0.5)
-		border: .2em solid #555
-		padding: .7em
-
 	&__button
 		position: absolute
 		top: 0
@@ -35,12 +30,12 @@
 			border-color: #888
 			background-color: #e4e4e2
 
-		&--open
-			border-radius: 0 .2em 0 .2em
-			border-top: none
-			border-right: none
-			border-left: .1em solid #888
-			border-bottom: .1em solid #888
+	&__button--open
+		border-radius: 0 .2em 0 .2em
+		border-top: none
+		border-right: none
+		border-left: .1em solid #888
+		border-bottom: .1em solid #888
 
 	#toggleLogButton
 		right: 0
@@ -66,7 +61,7 @@
 
 	&__title
 		padding: 0 0 1.5em 0 !important
-		border: none 			  !important
+		border: none 			   !important
 		font-weight: bold
 		color: #555
 
@@ -100,3 +95,8 @@
 			padding-right: 1em
 			font-weight: bold
 			text-align: right
+
+.log--visible 
+	box-shadow: -50em 30em 150em 150em rgba(255, 255, 255, 0.5)
+	border: .2em solid #555
+	padding: .7em

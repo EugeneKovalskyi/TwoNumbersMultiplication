@@ -17,6 +17,13 @@ const logTable						 = document.getElementById('logTable')
 const answerInput 				 = document.getElementById('answerInput')
 const toggleSettingsButton = document.getElementById('toggleSettingsButton')
 const settingsContainer 	 = document.getElementById('settingsContainer')
+const stopwatchCheckbox		 = document.getElementById('stopwatchCheckbox')
+const autocheckCheckbox    = document.getElementById('autocheckCheckbox')
+const soundCheckbox				 = document.getElementById('soundCheckbox')
+const themeCheckbox				 = document.getElementById('themeCheckbox')
+
+const soundCorrectAnswer = new Audio('./sound/correctAnswer.mp3')
+const soundWrongAnswer   = new Audio('./sound/wrongAnswer.mp3')
 
 let stopwatchId		= null
 let correctAnswer = null
@@ -44,23 +51,44 @@ function onKeydown(event) {
 	// Restrict number-typed input to VALID_INPUT_VALUES
 	if ( !VALID_INPUT_VALUES.includes(event.key) 
 		|| event.key === ' ' )  
-	{ event.preventDefault() }
+	{ 
+		event.preventDefault() 
+	}
 
 		// Limit input answer to 6 digits
 	if ( target.closest('#answerInput') 
 		&& target.textLength === 6  
 		&& !VALID_INPUT_VALUES.slice(10).includes(event.key)) 
-	{ event.preventDefault() }
+	{ 
+		event.preventDefault() 
+	}
 
 	// Limit input range to 3 digits
 	if ( target.closest('#range') 
 		&& target.textLength === 3  
 		&& !VALID_INPUT_VALUES.slice(10).includes(event.key)) 
-	{ event.preventDefault() }
+	{ 
+		event.preventDefault() 
+	}
 }
 
 function onKeyup(event) {
-	if (event.target === answerInput && event.key === 'Enter') onCheck()
+	const target = event.target
+
+	// Check on ENTER
+	if ( target === answerInput && event.key === 'Enter' ) 
+	{
+		onCheck()
+	}
+
+	// Autocheck correct answer
+	if ( target === answerInput 
+		&& autocheckCheckbox.checked 
+		&& +target.value === correctAnswer ) 
+	{
+		onCheck()
+	}
+
 }
 
 function onClick(event) {
@@ -72,14 +100,18 @@ function onClick(event) {
 	if (target === clearLogButton)  			clearLog()
 	if (target === toggleLogButton)				toggleLog()
 	if (target === toggleSettingsButton)	toggleSettings()
+	if (target === stopwatchCheckbox)			toggleStopwatch()
+	if (target === themeCheckbox) 				toggleTheme()
 	
 	// Close log if click outside of log window
-	if ( !logTable.hidden && !event.target.closest('#log') ) {
+	if ( !logTable.hidden && !event.target.closest('#log') ) 
+	{
 		toggleLog()		
 	}
 
 	// Close log if click outside of settings window
-	if ( !settingsContainer.hidden && !event.target.closest('#settings') ) {
+	if ( !settingsContainer.hidden && !event.target.closest('#settings') ) 
+	{
 		toggleSettings()		
 		onStop()
 		updateExpression()
@@ -142,6 +174,8 @@ function onStop() {
 
 function checkAnswer(isCorrect) {
   if (isCorrect) {
+		if (soundCheckbox.checked) soundCorrectAnswer.play()
+
     correctIcon.hidden = false
     answerInput.classList.add('answer__input--correct')
 
@@ -151,6 +185,8 @@ function checkAnswer(isCorrect) {
     }, 700)
 
   } else {
+		if (soundCheckbox.checked) soundWrongAnswer.play()
+
     wrongIcon.hidden = false
     answerInput.classList.add('answer__input--wrong')
 
@@ -182,6 +218,14 @@ function clearAnswerInput() {
 
 function getRandomMultiplier(min, max) {
 	return Math.floor(min + Math.random() * (max + 1 - min)) 
+}
+
+function toggleStopwatch() {
+	stopwatch.hidden = !stopwatch.hidden
+}
+
+function toggleTheme() {
+	document.body.classList.toggle('body--light')
 }
 
 // For tests

@@ -1,5 +1,6 @@
 @use 'components/Stopwatch'
 @use 'components/Settings'
+@use 'components/Answer'
 @use 'components/Log'
 	
 html, body
@@ -12,6 +13,34 @@ body
 	color: #222
 	background-color: #1b1b1d
 	filter: invert(1)
+
+.body--light
+	background-color: #eee
+	filter: invert(0)
+
+	#correctIcon
+		color: #0b0
+
+	#wrongIcon
+		color: #b00
+	
+	.answer__input--correct
+		border-color: #0b0 !important
+
+	.answer__input--wrong
+		border-color: #b00 !important
+
+	.settings--visible
+		box-shadow: 75em 30em 150em 150em rgba(0, 0, 0, 0.5)
+
+	.log--visible
+		box-shadow: -50em 30em 150em 150em rgba(0, 0, 0, 0.5)
+
+	.td--correct
+		color: #0b0
+
+	.td--wrong
+		color: #b00
 
 .container
 	position: absolute
@@ -42,65 +71,3 @@ body
 
 	&:active
 		font-size: .85em
-
-.answer
-	text-align: center
-	margin-top: 2em
-
-	&__input
-		appearance: textfield // remove arrows
-		display: block
-		margin: 1em auto 0 auto
-		padding: .2em
-		font-size: 1em
-		text-align: center
-		border-radius: .2em
-		border: .2em solid #888
-
-		&:hover
-			border-color: #555
-
-		&:focus
-			outline: none
-			border-color: #555
-			box-shadow: 0 0 .4em#555
-
-		&--correct
-			border-color: #f4f !important
-
-		&--wrong
-			border-color: #4ff !important
-
-#correctIcon, #wrongIcon
-	position: absolute
-	top: 3.4em
-	font-size: 1.4em
-
-#correctIcon
-	left: .2em
-	color: #f4f
-
-#wrongIcon
-	right: .2em
-	color: #4ff
-
-#check
-	font-size: 1em
-	margin-top: 2em
-	padding: 1em
-	border-radius: .5em
-	border: .2em solid #888
-	cursor: pointer
-
-	&:focus
-		outline: none
-
-	&:hover
-		color: #555
-		background-color: #ddd
-		border-color: #555
-
-	&:active
-		color: #888
-		border-color: #888
-		background-color: #e4e4e2
