@@ -11,46 +11,46 @@
 	&__button
 		position: absolute
 		top: 0
-		padding-top: 0	
-		width: 1.5em
-		height: 1.5em
-		font-size: 1.7em
-		color: $color-grey-light
-		border-radius: .2em
-		border: $border-thin
+		padding: .6em
+		width: 2.3em
+		height: 2.3em
+		border-radius: .6em
+		border: $border-bold
 		background-color: $bgc-white-dark
 		cursor: pointer
 		z-index: 2
 
 		&:hover
-			color: $color-grey-dark
 			border-color: $color-grey-dark
 			background-color: $bgc-white-dark
+			padding: .5em
+			width: 2.5em
+			height: 2.5em
 
 		&:active
-			color: $color-grey-light
 			border-color: $color-grey-light
 			background-color: $bgc-white-dark
 
+		&:focus 
+			outline: none
+
 	&__button--open
-		border-radius: 0 .2em 0 .2em
+		border-radius: 0 .6em 0 .6em
 		border-top: none
 		border-right: none
-		border-left: $border-thin
-		border-bottom: $border-thin
+		border-left: $border-bold
+		border-bottom: $border-bold
 
 	#toggleLogButton
 		right: 0
-		padding-bottom: .2em
 
 	#clearLogButton
 		left: 0
-		font-weight: bold
-		border-radius: .2em 0 .2em 0
+		border-radius: .6em 0 .6em 0
 		border-top: none
 		border-left: none
-		border-right: $border-thin
-		border-bottom: $border-thin
+		border-right: $border-bold
+		border-bottom: $border-bold
 
 	&__table-container
 		position: relative

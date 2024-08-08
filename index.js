@@ -22,8 +22,8 @@ const autocheckCheckbox    = document.getElementById('autocheckCheckbox')
 const soundCheckbox				 = document.getElementById('soundCheckbox')
 const themeCheckbox				 = document.getElementById('themeCheckbox')
 
-const soundCorrectAnswer = new Audio('./sound/correctAnswer.mp3')
-const soundWrongAnswer   = new Audio('./sound/wrongAnswer.mp3')
+const soundCorrectAnswer = new Audio('sound/correctAnswer.mp3')
+const soundWrongAnswer   = new Audio('sound/wrongAnswer.mp3')
 
 let stopwatchId		= null
 let correctAnswer = null
@@ -57,7 +57,7 @@ function onKeydown(event) {
 
 		// Limit input answer to 6 digits
 	if ( target.closest('#answerInput') 
-		&& target.textLength === 6  
+		&& target.value.length === 6  
 		&& !VALID_INPUT_VALUES.slice(10).includes(event.key)) 
 	{ 
 		event.preventDefault() 
@@ -65,7 +65,7 @@ function onKeydown(event) {
 
 	// Limit input range to 3 digits
 	if ( target.closest('#range') 
-		&& target.textLength === 3  
+		&& target.value.length === 3  
 		&& !VALID_INPUT_VALUES.slice(10).includes(event.key)) 
 	{ 
 		event.preventDefault() 

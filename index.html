@@ -6,8 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Тренировка умножения 2-х чисел в уме</title>
-    <link rel="icon" href="./icons/multiply.svg" type="image/x-icon">
+    <title>Two Numbers Multiplication</title>
+    <link rel="icon" href="icons/multiply.png" type="image/x-icon">
     <link
       rel="stylesheet"
       href="style/index.css"
@@ -15,25 +15,27 @@
     />
   </head>
   <body>
-    <div id="settings" class="settings settings">
-      <input id="toggleSettingsButton"
-             type="button" 
-             value="⚙" 
-             class="settings__button">
-
-      <div id="settingsContainer">
+    <div id="app">
+      <div id="settings" class="settings settings">
+        <input id="toggleSettingsButton"
+               type="image" 
+               src="icons/settings.svg"
+               alt="Settings"
+               class="settings__button">
+      
+        <div id="settingsContainer">
         <div class="settings__title"><span>SETTINGS</span></div>
 
         <div id="range" class="settings__range settings__parameter">
           <label for="rangeLeft">Range: </label>
           <input id="rangeLeft" 
-                 type="number" 
+                 type="text" 
                  name="range"
                  value="2" 
                  class="settings__range-left">
           <label for="rangeRight"> - </label>
           <input id="rangeRight" 
-                 type="number" 
+                 type="text" 
                  name="range" 
                  value="20"
                  class="settings__range-right">
@@ -70,76 +72,80 @@
                  checked>
           <label for="themeCheckbox">Dark Theme</label>
         </div>
+        </div>
       </div>
-    </div>
-
-    <div id="stopwatch" class="stopwatch">00.00</div>
-
-    <div id="log" class="log">
-      <input id="clearLogButton" 
-             type="button" 
-             value="♲" 
-             class="log__button">
-      <input id="toggleLogButton" 
-             type="button" 
-             value="▤" 
-             class="log__button">
-
-      <div class="log__table-container">
-        <table id="logTable" class="log__table">
-
-          <thead class="log__head">
-            <tr>
-              <td colspan="5" class="log__title">LOG</td>
-            </tr>
-            <tr>
-              <th>✔ / ×</th>
-              <th>Expression</th>
-              <th>Time</th>
-              <th>Received</th>
-              <th>Expected</th>
-            </tr>
-          </thead>
-
-          <tbody id="tableBody" class="log__body"></tbody>
+    
+      <div id="stopwatch" class="stopwatch">00.00</div>
+    
+      <div id="log" class="log">
+        <input id="clearLogButton" 
+               type="image" 
+               src="icons/clear-log.svg"
+               alt="Clear log"
+               class="log__button">
+        <input id="toggleLogButton" 
+               type="image" 
+               src="icons/log.svg"
+               alt="Log"
+               class="log__button">
+      
+        <div class="log__table-container">
+          <table id="logTable" class="log__table">
           
-          <tfoot class="log__foot">
-            <tr>
-              <td colspan="4">Total score</td>
-              <td id="totalAnswers">0</td>
-            </tr>
-            <tr>
-              <td colspan="4">Average time</td>
-              <td id="averageTime">0</td>
-            </tr>
-            <tr>
-              <td colspan="4">Total time</td>
-              <td id="totalTime">0</td>
-            </tr>
-          </tfoot>
-        </table>
+            <thead class="log__head">
+              <tr>
+                <td colspan="5" class="log__title">LOG</td>
+              </tr>
+              <tr>
+                <th>✔ / ×</th>
+                <th>Expression</th>
+                <th>Time</th>
+                <th>Received</th>
+                <th>Expected</th>
+              </tr>
+            </thead>
+          
+            <tbody id="tableBody" class="log__body"></tbody>
+            
+            <tfoot class="log__foot">
+              <tr>
+                <td colspan="4">Total score</td>
+                <td id="totalAnswers">0</td>
+              </tr>
+              <tr>
+                <td colspan="4">Average time</td>
+                <td id="averageTime">0</td>
+              </tr>
+              <tr>
+                <td colspan="4">Total time</td>
+                <td id="totalTime">0</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
-    </div>
-
-    <div class="container">
-      <div class="math-expression">
-        <span id="start">START</span>
-        <span id="mathExpression"></span>
+    
+      <div class="container">
+        <div class="math-expression">
+          <span id="start">START</span>
+          <span id="mathExpression"></span>
+        </div>
+      
+  			<hr>
+      
+        <div class="answer">
+          <span id="correctIcon">✔</span>
+          <span id="wrongIcon">×</span>
+          <span>Answer</span>
+          <input id="answerInput" 
+                 type="text" 
+                 class="answer__input" />
+          <input id="check" 
+                 type="button" 
+                 value="Check">
+        </div>
       </div>
-
-			<hr>
-
-      <div class="answer">
-        <span id="correctIcon">✔</span>
-        <span id="wrongIcon">×</span>
-        <span>Answer</span>
-        <input id="answerInput" 
-               type="number" 
-               class="answer__input" />
-        <input id="check" 
-               type="button" 
-               value="Check">
-      </div>
+  </div>
 
     <script type="module" src="index.js"></script>
   </body>

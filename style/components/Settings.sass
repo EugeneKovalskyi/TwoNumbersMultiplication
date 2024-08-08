@@ -11,32 +11,36 @@
 	&__button
 		position: absolute
 		top: 0
-		padding: 0 .2em .1em .2em
-		font-size: 1.8em
-		color: $color-grey-light
-		border-radius: .2em
-		border: $border-thin
+		padding: .6em
+		width: 2.3em
+		height: 2.3em
+		border-radius: .6em
+		border: $border-bold
 		background-color: $bgc-white-dark
 		cursor: pointer
 		z-index: 2
 
 		&:hover
-			color: $color-grey-dark
 			background-color: $bgc-white-dark
 			border-color: $color-grey-dark
+			padding: .5em
+			width: 2.5em
+			height: 2.5em
 
 		&:active
-			color: $color-grey-light
 			border-color: $color-grey-light
 			background-color: $bgc-white-dark
 
+		&:focus 
+			outline: none
+
 		&--open
 			left: 0
-			border-radius: .2em 0 .2em 0
+			border-radius: .6em 0 .6em 0
 			border-top: none
 			border-left: none
-			border-right: $border-thin
-			border-bottom: $border-thin
+			border-right: $border-bold
+			border-bottom: $border-bold
 
 	&__parameter
 		margin-top: .5em
@@ -51,7 +55,6 @@
 		margin-top: 1.5em
 		
 		&-left, &-right
-			appearance: textfield // remove arrows
 			padding: .2em
 			width: 2.3em
 			text-align: center

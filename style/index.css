@@ -28,32 +28,36 @@
 .settings__button {
   position: absolute;
   top: 0;
-  padding: 0 0.2em 0.1em 0.2em;
-  font-size: 1.8em;
-  color: #888;
-  border-radius: 0.2em;
-  border: 0.1em solid #888;
+  padding: 0.6em;
+  width: 2.3em;
+  height: 2.3em;
+  border-radius: 0.6em;
+  border: 0.3em solid #888;
   background-color: #ddd;
   cursor: pointer;
   z-index: 2;
 }
 .settings__button:hover {
-  color: #555;
   background-color: #ddd;
   border-color: #555;
+  padding: 0.5em;
+  width: 2.5em;
+  height: 2.5em;
 }
 .settings__button:active {
-  color: #888;
   border-color: #888;
   background-color: #ddd;
 }
+.settings__button:focus {
+  outline: none;
+}
 .settings__button--open {
   left: 0;
-  border-radius: 0.2em 0 0.2em 0;
+  border-radius: 0.6em 0 0.6em 0;
   border-top: none;
   border-left: none;
-  border-right: 0.1em solid #888;
-  border-bottom: 0.1em solid #888;
+  border-right: 0.3em solid #888;
+  border-bottom: 0.3em solid #888;
 }
 .settings__parameter {
   margin-top: 0.5em;
@@ -68,7 +72,6 @@
   margin-top: 1.5em;
 }
 .settings__range-left, .settings__range-right {
-  appearance: textfield;
   padding: 0.2em;
   width: 2.3em;
   text-align: center;
@@ -98,7 +101,6 @@
   margin-top: 2em;
 }
 .answer__input {
-  appearance: textfield;
   display: block;
   margin: 1em auto 0 auto;
   padding: 0.2em;
@@ -171,46 +173,46 @@
 .log__button {
   position: absolute;
   top: 0;
-  padding-top: 0;
-  width: 1.5em;
-  height: 1.5em;
-  font-size: 1.7em;
-  color: #888;
-  border-radius: 0.2em;
-  border: 0.1em solid #888;
+  padding: 0.6em;
+  width: 2.3em;
+  height: 2.3em;
+  border-radius: 0.6em;
+  border: 0.3em solid #888;
   background-color: #ddd;
   cursor: pointer;
   z-index: 2;
 }
 .log__button:hover {
-  color: #555;
   border-color: #555;
   background-color: #ddd;
+  padding: 0.5em;
+  width: 2.5em;
+  height: 2.5em;
 }
 .log__button:active {
-  color: #888;
   border-color: #888;
   background-color: #ddd;
 }
+.log__button:focus {
+  outline: none;
+}
 .log__button--open {
-  border-radius: 0 0.2em 0 0.2em;
+  border-radius: 0 0.6em 0 0.6em;
   border-top: none;
   border-right: none;
-  border-left: 0.1em solid #888;
-  border-bottom: 0.1em solid #888;
+  border-left: 0.3em solid #888;
+  border-bottom: 0.3em solid #888;
 }
 .log #toggleLogButton {
   right: 0;
-  padding-bottom: 0.2em;
 }
 .log #clearLogButton {
   left: 0;
-  font-weight: bold;
-  border-radius: 0.2em 0 0.2em 0;
+  border-radius: 0.6em 0 0.6em 0;
   border-top: none;
   border-left: none;
-  border-right: 0.1em solid #888;
-  border-bottom: 0.1em solid #888;
+  border-right: 0.3em solid #888;
+  border-bottom: 0.3em solid #888;
 }
 .log__table-container {
   position: relative;
@@ -352,8 +354,17 @@ body {
   }
 }
 @media (max-width: 367px) {
-  body {
-    font-size: 12px;
+  .settings {
+    left: 0.1em;
+  }
+  .settings--visible {
+    padding: 0.5em;
+  }
+  .log {
+    right: 0.1em;
+  }
+  .log--visible {
+    padding: 0.2em;
   }
 }
 
