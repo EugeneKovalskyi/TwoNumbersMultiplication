@@ -13,7 +13,7 @@
   - Stopwatch
 
 ### Settings part
-> Closing window of setting applies range changes and dispatch stop-event
+> Closing settings window applies range changes and dispatch stop-event
   - Range selection, limited by 3-digits number in each field
   - Stopwatch toggle (hide/show)
   - Autocheck toggle for correct answer (on/off)
