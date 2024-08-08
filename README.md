@@ -29,6 +29,6 @@
   - Button for clean answers history
 
 ### Stopwatch
-  Count seconds and centi-seconds, which were spend on each answer. 
-  After each answer starts from 0. 
-  Click on stopwatch stops time and breaks possibility to answer.
+  - Count seconds and centi-seconds, which were spend on each answer. 
+  - After each answer starts from 0. 
+  - Click on stopwatch stops time and breaks possibility to answer.
