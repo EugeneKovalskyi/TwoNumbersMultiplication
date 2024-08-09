@@ -54,8 +54,6 @@
   border-radius: 0.6em 0 0.6em 0;
   border-top: none;
   border-left: none;
-  border-right: 0.3em solid #888;
-  border-bottom: 0.3em solid #888;
 }
 .settings__parameter {
   margin-top: 0.5em;
@@ -196,8 +194,6 @@
   border-radius: 0 0.6em 0 0.6em;
   border-top: none;
   border-right: none;
-  border-left: 0.3em solid #888;
-  border-bottom: 0.3em solid #888;
 }
 .log #toggleLogButton {
   right: 0;
@@ -207,8 +203,6 @@
   border-radius: 0.6em 0 0.6em 0;
   border-top: none;
   border-left: none;
-  border-right: 0.3em solid #888;
-  border-bottom: 0.3em solid #888;
 }
 .log__table-container {
   position: relative;
