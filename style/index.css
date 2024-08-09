@@ -68,6 +68,7 @@
   margin-top: 1.5em;
 }
 .settings__range-left, .settings__range-right {
+  appearance: textfield;
   padding: 0.2em;
   width: 2.3em;
   text-align: center;
@@ -331,6 +332,10 @@ body {
 }
 #start:active {
   font-size: 0.85em;
+}
+
+#answerInput {
+  appearance: textfield;
 }
 
 @media (max-width: 522px) {
