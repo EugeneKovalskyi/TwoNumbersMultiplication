@@ -12,6 +12,7 @@
   - Settings
   - Log
   - Stopwatch
+  - 
 ### Settings part
 > Closing settings window applies range changes and dispatch stop-event
   - Range selection, limited by 3-digits number in each field
@@ -19,6 +20,7 @@
   - Autocheck toggle for correct answer (on/off)
   - Sound toggle for correct and wrong answer (on/off)
   - Theme toggle (dark/light)
+  - 
 ### Log part
   - History of answers in table, that have next fields:
     - correct/wrong answer sign
@@ -27,6 +29,7 @@
     - received result from user
     - expected (correct) result
   - Button for clean answers history
+  - 
 ### Stopwatch
   - Count seconds and centi-seconds, which were spend on each answer. 
   - After each answer starts from 0. 
