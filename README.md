@@ -1,6 +1,7 @@
 # App parts:
   - Main
   - Minor
+  - Alert
 
 ## Main part
   - Random expression
@@ -11,6 +12,9 @@
   - Settings
   - Log
   - Stopwatch
+
+## Alert part
+When screen orientation goes to landscape - app hides, alert shows
 
 ### Settings part
 > Closing settings window applies range changes and dispatch stop-event
