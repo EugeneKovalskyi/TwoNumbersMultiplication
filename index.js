@@ -28,10 +28,10 @@ const autocheckDelay   		 = document.getElementById('autocheckDelay')
 const soundCorrectAnswer = new Audio('sound/correctAnswer.mp3')
 const soundWrongAnswer   = new Audio('sound/wrongAnswer.mp3')
 
-let stopwatchId				= null
-let correctAnswer 		= null
-let autocheckId 		 	= null
-let delay 	= null
+let stopwatchId		= null
+let correctAnswer = null
+let autocheckId 	= null
+let delay 				= null
 
 window.addEventListener('load', onLoad)
 document.addEventListener('keydown', onKeydown)
@@ -226,7 +226,7 @@ function checkAnswer(isCorrect) {
     setTimeout(() => {
       correctIcon.hidden = true
       answerInput.classList.remove('answer__input--correct')
-    }, delay)
+    }, 500)
 
   } else {
 		if (soundCheckbox.checked) soundWrongAnswer.play()
@@ -237,7 +237,7 @@ function checkAnswer(isCorrect) {
     setTimeout(() => {
       wrongIcon.hidden = true
       answerInput.classList.remove('answer__input--wrong')
-    }, delay)
+    }, 500)
   }
 }
 
