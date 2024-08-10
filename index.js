@@ -71,6 +71,7 @@ function onKeydown(event) {
 
 	// Autocheck answer
 	if ( target === answerInput && autocheckCheckbox.checked ) {
+		restrictNumInput(6, event)
 		clearTimeout(autocheckId)
 		autocheckId = setTimeout(onCheck, delay)
 	}

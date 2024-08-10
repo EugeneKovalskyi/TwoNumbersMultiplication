@@ -118,11 +118,14 @@
     width: 1.9em;
     height: 1.9em;
   }
+  .autocheck__delay label {
+    margin-right: 0.1em;
+  }
   #quick {
-    margin-right: 0.8em;
+    margin-right: 0.9em;
   }
   #medium, #slow {
-    margin-right: 1.7em;
+    margin-right: 1.8em;
   }
 }
 @media (max-width: 418px) {
