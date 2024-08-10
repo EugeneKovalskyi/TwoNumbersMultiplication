@@ -58,14 +58,12 @@
           <label for="autocheckCheckbox">Autocheck</label>
 
           <div id="autocheckDelay" class="autocheck__delay">
-            <label for="slow">Slow</label>
-            <label for="medium">Medium</label>
+            <input type="radio" name="delay" id="slow" class="autocheck__radio" value="700">
+            <label for="slow">Slow</label><br>
+            <input type="radio" name="delay" id="medium" class="autocheck__radio" value="500" checked>
+            <label for="medium">Medium</label><br>
+            <input type="radio" name="delay" id="quick" class="autocheck__radio" value="300">
             <label for="quick">Quick</label>
-            <div>
-              <input type="radio" name="delay" id="slow" class="autocheck__radio" value="700">
-              <input type="radio" name="delay" id="medium" class="autocheck__radio" value="500" checked>
-              <input type="radio" name="delay" id="quick" class="autocheck__radio" value="300">
-            </div>
           </div>
         </div>
         
