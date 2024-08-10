@@ -12,10 +12,6 @@
   - Settings
   - Log
   - Stopwatch
-
-## Alert part
-When screen orientation goes to landscape - app hides, alert shows
-
 ### Settings part
 > Closing settings window applies range changes and dispatch stop-event
   - Range selection, limited by 3-digits number in each field
@@ -23,8 +19,6 @@ When screen orientation goes to landscape - app hides, alert shows
   - Autocheck toggle for correct answer (on/off)
   - Sound toggle for correct and wrong answer (on/off)
   - Theme toggle (dark/light)
-
-
 ### Log part
   - History of answers in table, that have next fields:
     - correct/wrong answer sign
@@ -33,8 +27,10 @@ When screen orientation goes to landscape - app hides, alert shows
     - received result from user
     - expected (correct) result
   - Button for clean answers history
-
 ### Stopwatch
   - Count seconds and centi-seconds, which were spend on each answer. 
   - After each answer starts from 0. 
   - Click on stopwatch stops time and breaks possibility to answer.
+
+## Alert part
+When screen orientation goes to landscape - app hides, alert shows
