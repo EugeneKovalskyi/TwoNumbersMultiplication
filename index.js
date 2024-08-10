@@ -1,6 +1,6 @@
 import { startStopwatch, stopwatchTime } from './components/Stopwatch.js'
 import { addLogRow, clearLog, toggleLog } from './components/Log.js'
-import { toggleSettings, getRange } from "./components/Settings.js";
+import { toggleSettings, getRange, getMs } from "./components/Settings.js";
 
 const VALID_INPUT_VALUES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 													 	'Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete']
@@ -23,18 +23,20 @@ const stopwatchCheckbox		 = document.getElementById('stopwatchCheckbox')
 const autocheckCheckbox    = document.getElementById('autocheckCheckbox')
 const soundCheckbox				 = document.getElementById('soundCheckbox')
 const themeCheckbox				 = document.getElementById('themeCheckbox')
+const autocheckDelay   		 = document.getElementById('autocheckDelay')
 
 const soundCorrectAnswer = new Audio('sound/correctAnswer.mp3')
 const soundWrongAnswer   = new Audio('sound/wrongAnswer.mp3')
 
-let stopwatchId		= null
-let correctAnswer = null
-console.log(screen.orientation);
+let stopwatchId				= null
+let correctAnswer 		= null
+let autocheckId 		 	= null
+let delay 	= null
 
-window  .addEventListener('load',    onLoad)
+window.addEventListener('load', onLoad)
 document.addEventListener('keydown', onKeydown)
-document.addEventListener('keyup',   onKeyup)
-document.addEventListener('click',   onClick)
+document.addEventListener('keyup', onKeyup)
+document.addEventListener('click', onClick)
 screen.orientation.addEventListener('change', onOrientChange)
 
 // Handlers
@@ -48,10 +50,30 @@ function onLoad() {
 	logTable.hidden 				  = true
 	checkButton.disabled 		  = true
 	answerInput.disabled  	  = true
+
+	// to local storage
+	if (stopwatchCheckbox.checked) stopwatch.hidden = false
+	else stopwatch.hidden = true
+
+	if (autocheckCheckbox.checked) {
+		delay = 500
+
+		checkButton.hidden 		= true
+		autocheckDelay.hidden = false
+	} else {
+		checkButton.hidden 		= false
+		autocheckDelay.hidden = true
+	}
 }
 
 function onKeydown(event) {
 	const target = event.target
+
+	// Autocheck answer
+	if ( target === answerInput && autocheckCheckbox.checked ) {
+		clearTimeout(autocheckId)
+		autocheckId = setTimeout(onCheck, delay)
+	}
 
 	// Restrict number-typed input to VALID_INPUT_VALUES
 	if ( !VALID_INPUT_VALUES.includes(event.key) 
@@ -60,40 +82,22 @@ function onKeydown(event) {
 		event.preventDefault() 
 	}
 
-		// Limit input answer to 6 digits
-	if ( target.closest('#answerInput') 
-		&& target.value.length === 6  
-		&& !VALID_INPUT_VALUES.slice(10).includes(event.key)) 
-	{ 
-		event.preventDefault() 
-	}
+	// Restrict input answer to 6 digits
+	if ( target.closest('#answerInput') ) restrictNumInput(6, event)
 
-	// Limit input range to 3 digits
-	if ( target.closest('#range') 
-		&& target.value.length === 3  
-		&& !VALID_INPUT_VALUES.slice(10).includes(event.key)) 
-	{ 
-		event.preventDefault() 
-	}
+	// Restrict input range to 3 digits
+	if ( target.closest('#range') ) restrictNumInput(4, event)
 }
 
 function onKeyup(event) {
 	const target = event.target
 
 	// Check on ENTER
-	if ( target === answerInput && event.key === 'Enter' ) 
-	{
-		onCheck()
-	}
-
-	// Autocheck correct answer
 	if ( target === answerInput 
-		&& autocheckCheckbox.checked 
-		&& +target.value === correctAnswer ) 
-	{
+		&& event.key === 'Enter'
+		&& !autocheckCheckbox.checked ) {
 		onCheck()
 	}
-
 }
 
 function onClick(event) {
@@ -104,10 +108,29 @@ function onClick(event) {
 	if (target === checkButton)   				onCheck()
 	if (target === clearLogButton)  			clearLog()
 	if (target === toggleLogButton)				toggleLog()
-	if (target === toggleSettingsButton)	toggleSettings()
 	if (target === stopwatchCheckbox)			toggleStopwatch()
 	if (target === themeCheckbox) 				toggleTheme()
+
+	if (target === toggleSettingsButton)	{
+		toggleSettings()
+		onStop()
+	}
 	
+	if (target === autocheckCheckbox) {
+		if (autocheckCheckbox.checked) {
+			autocheckDelay.hidden = false
+			checkButton.hidden 		= true
+		}	else {
+			autocheckDelay.hidden = true
+			checkButton.hidden    = false
+		}
+	}
+
+	if ( target.classList.contains('autocheck__radio') ) 
+	{
+		delay = getMs(target)
+	}
+
 	// Close log if click outside of log window
 	if ( !logTable.hidden && !event.target.closest('#log') ) 
 	{
@@ -117,8 +140,8 @@ function onClick(event) {
 	// Close log if click outside of settings window
 	if ( !settingsContainer.hidden && !event.target.closest('#settings') ) 
 	{
-		toggleSettings()		
-		onStop()
+		toggleSettings()	
+		// ...and apply range if was changed
 		updateExpression()
 	}
 }
@@ -132,7 +155,7 @@ function onOrientChange(event) {
 
 	} else {
 		landscapeOrientMsg.hidden = true
-		app.hidden 								= false
+		app.hidden 							  = false
 	}
 }
 
@@ -184,6 +207,9 @@ function onStop() {
 
 	stopwatch.classList.add('stopwatch--timestop')
 
+	if (autocheckCheckbox.checked) checkButton.hidden = true
+	else checkButton.hidden = false
+
 	mathExpression.hidden = true
 	startButton.hidden 		= false
 	checkButton.disabled 	= true
@@ -200,7 +226,7 @@ function checkAnswer(isCorrect) {
     setTimeout(() => {
       correctIcon.hidden = true
       answerInput.classList.remove('answer__input--correct')
-    }, 700)
+    }, delay)
 
   } else {
 		if (soundCheckbox.checked) soundWrongAnswer.play()
@@ -211,7 +237,7 @@ function checkAnswer(isCorrect) {
     setTimeout(() => {
       wrongIcon.hidden = true
       answerInput.classList.remove('answer__input--wrong')
-    }, 700)
+    }, delay)
   }
 }
 
@@ -232,6 +258,14 @@ function renderExpression(firstNum, secondNum) {
 
 function clearAnswerInput() {
 	answerInput.value = ''
+}
+
+function restrictNumInput(characterNum, event) {
+	if ( event.target.value.length === characterNum 
+		&& !VALID_INPUT_VALUES.slice(10).includes(event.key)) 
+	{ 
+		event.preventDefault() 
+	}
 }
 
 function getRandomMultiplier(min, max) {

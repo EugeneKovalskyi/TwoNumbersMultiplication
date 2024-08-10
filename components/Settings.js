@@ -5,8 +5,6 @@ const settingsContainer 	 = document.getElementById('settingsContainer')
 const rangeLeft 					 = document.getElementById('rangeLeft')
 const rangeRight 					 = document.getElementById('rangeRight')
 
-
-
 function toggleSettings() {
 	settings.classList.toggle('settings--visible')
 	toggleSettingsButton.classList.toggle('settings__button--open')
@@ -20,4 +18,8 @@ function getRange() {
 	return [valueRangeLeft, valueRangeRight]
 }
 
-export { toggleSettings, getRange }
+function getMs(target) {
+	if (target.checked) return +target.value
+}
+
+export { toggleSettings, getRange, getMs }

@@ -39,7 +39,7 @@
 			border-left: none
 
 	&__parameter
-		margin-top: .5em
+		margin-top: .7em
 
 	&__title
 		margin-top: 0
@@ -73,3 +73,45 @@
 	box-shadow: 75em 30em 150em 150em rgba(255, 255, 255, 0.5)
 	border: .2em solid $color-grey-dark
 	padding: 1em	
+
+.autocheck
+	&__delay
+		margin-top: 0.2em
+		width: 100%
+		text-align: right
+		font-size: .8em
+
+#quick
+	margin-right: 1em
+
+#medium
+	margin-right: 2.7em
+
+#slow
+	margin-right: 2.5em
+
+@media (max-width: 522px) 
+	.settings__button
+		padding: .4em
+		width: 1.9em
+		height: 1.9em
+
+	#quick
+		margin-right: .8em
+
+	#medium, #slow
+		margin-right: 1.7em
+
+@media (max-width: 418px)
+	.settings__button
+		padding: .4em
+		width: 1.6em
+		height: 1.6em
+		border-width: .2em
+
+@media (max-width: 367px)
+	.settings
+		left: .1em
+
+	.settings--visible
+		padding: .5em

@@ -56,7 +56,7 @@
   border-left: none;
 }
 .settings__parameter {
-  margin-top: 0.5em;
+  margin-top: 0.7em;
 }
 .settings__title {
   margin-top: 0;
@@ -93,6 +93,54 @@
   padding: 1em;
 }
 
+.autocheck__delay {
+  margin-top: 0.2em;
+  width: 100%;
+  text-align: right;
+  font-size: 0.8em;
+}
+
+#quick {
+  margin-right: 1em;
+}
+
+#medium {
+  margin-right: 2.7em;
+}
+
+#slow {
+  margin-right: 2.5em;
+}
+
+@media (max-width: 522px) {
+  .settings__button {
+    padding: 0.4em;
+    width: 1.9em;
+    height: 1.9em;
+  }
+  #quick {
+    margin-right: 0.8em;
+  }
+  #medium, #slow {
+    margin-right: 1.7em;
+  }
+}
+@media (max-width: 418px) {
+  .settings__button {
+    padding: 0.4em;
+    width: 1.6em;
+    height: 1.6em;
+    border-width: 0.2em;
+  }
+}
+@media (max-width: 367px) {
+  .settings {
+    left: 0.1em;
+  }
+  .settings--visible {
+    padding: 0.5em;
+  }
+}
 .answer {
   text-align: center;
   margin-top: 2em;
@@ -258,6 +306,32 @@
   padding: 0.7em;
 }
 
+@media (max-width: 522px) {
+  .log__button {
+    padding: 0.4em;
+    width: 1.9em;
+    height: 1.9em;
+  }
+}
+@media (max-width: 418px) {
+  .log__table {
+    font-size: 0.7em;
+  }
+  .log__button {
+    padding: 0.4em;
+    width: 1.6em;
+    height: 1.6em;
+    border-width: 0.2em;
+  }
+}
+@media (max-width: 367px) {
+  .log {
+    right: 0.1em;
+  }
+  .log--visible {
+    padding: 0.2em;
+  }
+}
 html, body {
   margin: 0;
   padding: 0;
@@ -354,47 +428,6 @@ body {
 @media (max-width: 522px) {
   body {
     font-size: 16px;
-  }
-  .settings__button {
-    padding: 0.4em;
-    width: 1.9em;
-    height: 1.9em;
-  }
-  .log__button {
-    padding: 0.4em;
-    width: 1.9em;
-    height: 1.9em;
-  }
-}
-@media (max-width: 418px) {
-  .log__table {
-    font-size: 0.7em;
-  }
-  .settings__button {
-    padding: 0.4em;
-    width: 1.6em;
-    height: 1.6em;
-    border-width: 0.2em;
-  }
-  .log__button {
-    padding: 0.4em;
-    width: 1.6em;
-    height: 1.6em;
-    border-width: 0.2em;
-  }
-}
-@media (max-width: 367px) {
-  .settings {
-    left: 0.1em;
-  }
-  .settings--visible {
-    padding: 0.5em;
-  }
-  .log {
-    right: 0.1em;
-  }
-  .log--visible {
-    padding: 0.2em;
   }
 }
 
