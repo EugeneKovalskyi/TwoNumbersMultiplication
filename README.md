@@ -13,7 +13,7 @@
   - Log
   - Stopwatch
   - 
-### Settings part
+### Settings
 > Closing settings window applies range changes and dispatch stop-event
   - Range selection, limited by 3-digits number in each field
   - Stopwatch toggle (hide/show)
@@ -21,7 +21,7 @@
   - Sound toggle for correct and wrong answer (on/off)
   - Theme toggle (dark/light)
   - 
-### Log part
+### Log
   - History of answers in table, that have next fields:
     - correct/wrong answer sign
     - math expression
