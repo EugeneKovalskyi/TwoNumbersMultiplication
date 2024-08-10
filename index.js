@@ -5,6 +5,8 @@ import { toggleSettings, getRange } from "./components/Settings.js";
 const VALID_INPUT_VALUES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 													 	'Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete']
 // Elements
+const app									 = document.getElementById('app')
+const landscapeOrientMsg	 = document.getElementById('landscapeOrientMsg')
 const toggleLogButton			 = document.getElementById('toggleLogButton')		
 const clearLogButton			 = document.getElementById('clearLogButton')
 const mathExpression 			 = document.getElementById('mathExpression')
@@ -27,22 +29,25 @@ const soundWrongAnswer   = new Audio('sound/wrongAnswer.mp3')
 
 let stopwatchId		= null
 let correctAnswer = null
+console.log(screen.orientation);
 
 window  .addEventListener('load',    onLoad)
 document.addEventListener('keydown', onKeydown)
 document.addEventListener('keyup',   onKeyup)
 document.addEventListener('click',   onClick)
+screen.orientation.addEventListener('change', onOrientChange)
 
 // Handlers
 function onLoad() {
-	settingsContainer.hidden = true
-	clearLogButton.hidden 	 = true
-	mathExpression.hidden 	 = true
-	correctIcon.hidden 			 = true
-	wrongIcon.hidden 				 = true
-	logTable.hidden 				 = true
-	checkButton.disabled 		 = true
-	answerInput.disabled  	 = true
+	landscapeOrientMsg.hidden = true
+	settingsContainer.hidden  = true
+	clearLogButton.hidden 	  = true
+	mathExpression.hidden 	  = true
+	correctIcon.hidden 			  = true
+	wrongIcon.hidden 				  = true
+	logTable.hidden 				  = true
+	checkButton.disabled 		  = true
+	answerInput.disabled  	  = true
 }
 
 function onKeydown(event) {
@@ -115,6 +120,19 @@ function onClick(event) {
 		toggleSettings()		
 		onStop()
 		updateExpression()
+	}
+}
+
+function onOrientChange(event) {
+	const target = event.target
+
+	if ( target.type.includes('landscape') ) {
+		landscapeOrientMsg.hidden = false
+		app.hidden 								= true
+
+	} else {
+		landscapeOrientMsg.hidden = true
+		app.hidden 								= false
 	}
 }
 
