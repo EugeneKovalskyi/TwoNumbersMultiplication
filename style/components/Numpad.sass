@@ -1,0 +1,37 @@
+@use '../variables' as *
+
+.numpad
+	margin-top: 2em
+	user-select: none
+
+	&__table
+		padding: 0 1em
+		width: 100%
+		text-align: center
+		border-spacing: .6em
+
+		td
+			padding: .5em 0
+			width: 33.33%
+			border: $border-thin
+			border-radius: .5em
+			cursor: pointer
+
+			&:hover
+				border-color: $color-grey-dark
+				background-color: $bgc-white-dark
+				cursor: pointer
+	
+	&__check
+		padding: 0 !important
+		border: none !important
+		font-size: 1.3em 
+		
+	&__backspace
+		border: none !important
+
+.--autocheck
+	position: absolute
+	left: 50%
+	transform: translateX(-50%)
+		

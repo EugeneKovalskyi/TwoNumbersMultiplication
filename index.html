@@ -16,7 +16,7 @@
   </head>
   <body>
     <div id="app">
-      <div id="settings" class="settings settings">
+      <div id="settings" class="settings">
         <input id="toggleSettingsButton"
                type="image" 
                src="icons/settings.svg"
@@ -64,6 +64,14 @@
             <input type="radio" name="delay" id="quick" class="autocheck__radio" value="300">
             <label for="quick">Quick</label>
           </div>
+        </div>
+
+        <div class="settings__parameter">
+          <input id="numpadCheckbox" 
+                 type="checkbox" 
+                 name="numpad" 
+                 checked>
+          <label for="numpadCheckbox">Numpad</label>
         </div>
         
         <div class="settings__parameter">
@@ -152,6 +160,33 @@
           <input id="check" 
                  type="button" 
                  value="Check">
+        </div>
+
+        <div id="numpad" class="numpad">
+          <table class="numpad__table">
+            <tbody class="numpad__tbody">
+              <tr>
+                <td data-key="1">1</td>
+                <td data-key="2">2</td>
+                <td data-key="3">3</td>
+              </tr>
+              <tr>
+                <td data-key="4">4</td>
+                <td data-key="5">5</td>
+                <td data-key="6">6</td>
+              </tr>
+              <tr>
+                <td data-key="7">7</td>
+                <td data-key="8">8</td>
+                <td data-key="9">9</td>
+              </tr>
+              <tr>
+                <td id="numpadCheck" class="numpad__check" data-key="Check">✔</td>
+                <td id="numpadZero" data-key="0">0</td>
+                <td id="numpadBackspace" class="numpad__backspace" data-key="Backspace">⌫</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
   </div>

@@ -192,6 +192,43 @@
   background-color: #ddd;
 }
 
+.numpad {
+  margin-top: 2em;
+  user-select: none;
+}
+.numpad__table {
+  padding: 0 1em;
+  width: 100%;
+  text-align: center;
+  border-spacing: 0.6em;
+}
+.numpad__table td {
+  padding: 0.5em 0;
+  width: 33.33%;
+  border: 0.1em solid #888;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+.numpad__table td:hover {
+  border-color: #555;
+  background-color: #ddd;
+  cursor: pointer;
+}
+.numpad__check {
+  padding: 0 !important;
+  border: none !important;
+  font-size: 1.3em;
+}
+.numpad__backspace {
+  border: none !important;
+}
+
+.--autocheck {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .log {
   position: fixed;
   margin-top: 2em;

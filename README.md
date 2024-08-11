@@ -13,10 +13,15 @@
   - Stopwatch
   - 
 ### Settings
-> Closing settings window applies range changes and dispatch stop-event
+> Closing settings window applies range changes
+> Opening settings window dispatch stop-event
   - Range selection, limited by 3-digits number in each field
   - Stopwatch toggle (hide/show)
-  - Autocheck toggle for correct answer (on/off)
+  - Autocheck toggle (on/off). "On"-selection hide Check-button.
+    Autocheck has 3 delay length:
+      1. Slow === 700 ms
+      2. Medium === 500 ms (default)
+      3. Quick === 300 ms
   - Sound toggle for correct and wrong answer (on/off)
   - Theme toggle (dark/light)
   - 
