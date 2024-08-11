@@ -5,8 +5,6 @@ import { toggleSettings, getRange, getMs } from "./components/Settings.js";
 const VALID_INPUT_VALUES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 													 	'Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete']
 // Elements
-const app									 = document.getElementById('app')
-const landscapeOrientMsg	 = document.getElementById('landscapeOrientMsg')
 const toggleLogButton			 = document.getElementById('toggleLogButton')		
 const clearLogButton			 = document.getElementById('clearLogButton')
 const mathExpression 			 = document.getElementById('mathExpression')
@@ -37,11 +35,9 @@ window.addEventListener('load', onLoad)
 document.addEventListener('keydown', onKeydown)
 document.addEventListener('keyup', onKeyup)
 document.addEventListener('click', onClick)
-screen.orientation.addEventListener('change', onOrientChange)
 
 // Handlers
 function onLoad() {
-	landscapeOrientMsg.hidden = true
 	settingsContainer.hidden  = true
 	clearLogButton.hidden 	  = true
 	mathExpression.hidden 	  = true
@@ -144,19 +140,6 @@ function onClick(event) {
 		toggleSettings()	
 		// ...and apply range if was changed
 		updateExpression()
-	}
-}
-
-function onOrientChange(event) {
-	const target = event.target
-
-	if ( target.type.includes('landscape') ) {
-		landscapeOrientMsg.hidden = false
-		app.hidden 								= true
-
-	} else {
-		landscapeOrientMsg.hidden = true
-		app.hidden 							  = false
 	}
 }
 

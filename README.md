@@ -1,7 +1,6 @@
 # App parts:
   - Main
   - Minor
-  - Alert
 
 ## Main part
   - Random expression
@@ -34,6 +33,3 @@
   - Count seconds and centi-seconds, which were spend on each answer. 
   - After each answer starts from 0. 
   - Click on stopwatch stops time and breaks possibility to answer.
-
-## Alert part
-When screen orientation goes to landscape - app hides, alert shows
