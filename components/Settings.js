@@ -11,15 +11,8 @@ function toggleSettings() {
 	settingsContainer.hidden = !settingsContainer.hidden
 }
 
-function getRange() {
-	const valueRangeLeft	= +rangeLeft.value
-  const valueRangeRight = +rangeRight.value
-
-	return [valueRangeLeft, valueRangeRight]
-}
-
 function getMs(target) {
 	if (target.checked) return +target.value
 }
 
-export { toggleSettings, getRange, getMs }
+export { toggleSettings, getMs }

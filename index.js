@@ -1,6 +1,6 @@
 import { startStopwatch, stopwatchTime } from './components/Stopwatch.js'
 import { addLogRow, clearLog, toggleLog } from './components/Log.js'
-import { toggleSettings, getRange, getMs } from "./components/Settings.js";
+import { toggleSettings, getMs } from "./components/Settings.js";
 import { onNumpad } from './components/Numpad.js';
 
 const VALID_INPUT_VALUES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
@@ -43,9 +43,8 @@ document.addEventListener('click', onClick)
 
 // Handlers
 function onLoad() {
-	// localStorage.clear()
 	if (!localStorage.length) {
-		localStorage.setItem('range', '2-20')
+		localStorage.setItem('range', '2-19')
 		localStorage.setItem('autocheck', '0')
 		localStorage.setItem('delay', '500')
 		localStorage.setItem('stopwatch', '1')
@@ -115,9 +114,13 @@ function onKeydown(event) {
 	const target = event.detail.target ?? event.target
 
 	// Autocheck answer without numpad
-	if ( target === answerInput && autocheckCheckbox.checked ) {
-		clearTimeout(autocheckId)
-		autocheckId = setTimeout(onCheck, delay)
+	if ( target === answerInput ) {
+		restrictNumInput(8, event)
+
+		if ( autocheckCheckbox.checked ) {
+			clearTimeout(autocheckId)
+			autocheckId = setTimeout(onCheck, delay)
+		}
 	}
 
 	// Autocheck answer with numpad
@@ -132,11 +135,12 @@ function onKeydown(event) {
 		event.preventDefault() 
 	}
 
-	// Restrict input answer to 8 digits
-	if (target === answerInput) restrictNumInput(8, event)
+		
+	if ( target === rangeLeft || target === rangeRight) {
+		restrictNumInput(4, event)
 
-	// Restrict input range to 3 digits
-	if ( target.closest('#range') ) restrictNumInput(4, event)
+		localStorage.setItem('range', `${rangeLeft.value}-${rangeRight.value}`)
+	}
 }
 
 function onKeyup(event) {
@@ -232,8 +236,8 @@ function onClick(event) {
 	// Close log if click outside of settings window
 	if ( !settingsContainer.hidden && !event.target.closest('#settings') ) {
 		toggleSettings()	
-		// ...and apply range if was changed
-		updateExpression()
+		// ... and save range to localStorage
+		localStorage.setItem('range', `${rangeLeft.value}-${rangeRight.value}`)
 	}
 }
 
@@ -316,9 +320,10 @@ function renderCorrectness(isCorrect) {
 }
 
 function updateExpression() {
-	const range 		= getRange() // array
-	const firstNum  = getRandomMultiplier(...range)
-	const secondNum = getRandomMultiplier(...range)
+	const min = +rangeLeft.value
+	const max = +rangeRight.value
+	const firstNum  = getRandomMultiplier(min, max)
+	const secondNum = getRandomMultiplier(min, max)
 
 	correctAnswer = firstNum * secondNum
 
