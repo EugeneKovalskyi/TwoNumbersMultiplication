@@ -3,23 +3,22 @@ import { onCheck } from "../index.js"
 const answerInput = document.getElementById('answerInput')
 
 function onNumpad(event) {
-	const target = event.target
+  const target = event.target
 
-	if ( target.hasAttribute('data-key')) {
-		const key = target.dataset.key
-		const numpadEvent = new CustomEvent('keydown', { detail: { target } })
+  const key = target.dataset.key
+  const numpadEvent = new CustomEvent('keydown', { detail: { target } })
+
+  if (key === 'Backspace' && answerInput.value.length) {
+    answerInput.value = answerInput.value.slice(0, -1)
+    document.dispatchEvent(numpadEvent)
+
+  } else if (key === 'Check' && answerInput.value.length) {
+		onCheck()
 		
-		if (key === 'Backspace') {
-			answerInput.value = answerInput.value.slice(0, -1)
-
-		}	else if (key === 'Check') {
-			onCheck()
-
-		} else if (answerInput.value.length < 6) {
-			answerInput.value += key
-			document.dispatchEvent(numpadEvent)
-		}
-	}
+  } else if (answerInput.value.length < 8) {
+    answerInput.value += key
+    document.dispatchEvent(numpadEvent)
+  }
 }
 
 export { onNumpad }

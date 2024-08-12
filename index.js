@@ -17,17 +17,16 @@ const stopwatch			  		 = document.getElementById('stopwatch')
 const logTable						 = document.getElementById('logTable')
 const answerInput 				 = document.getElementById('answerInput')
 const toggleSettingsButton = document.getElementById('toggleSettingsButton')
-const settingsContainer 	 = document.getElementById('settingsContainer')
 const stopwatchCheckbox		 = document.getElementById('stopwatchCheckbox')
+const settingsContainer 	 = document.getElementById('settingsContainer')
 const autocheckCheckbox    = document.getElementById('autocheckCheckbox')
 const soundCheckbox				 = document.getElementById('soundCheckbox')
 const themeCheckbox				 = document.getElementById('themeCheckbox')
 const autocheckDelay   		 = document.getElementById('autocheckDelay')
 const numpad 					 		 = document.getElementById('numpad')
 const numpadCheckbox			 = document.getElementById('numpadCheckbox')
-const numpadCheck 				 = document.getElementById('numpadCheck')
-const numpadBackspace 		 = document.getElementById('numpadBackspace')
-const numpadZero 					 = document.getElementById('numpadZero')
+const rangeLeft 					 = document.getElementById('rangeLeft')
+const rangeRight 					 = document.getElementById('rangeRight')
 
 const soundCorrectAnswer = new Audio('sound/correctAnswer.mp3')
 const soundWrongAnswer   = new Audio('sound/wrongAnswer.mp3')
@@ -44,6 +43,17 @@ document.addEventListener('click', onClick)
 
 // Handlers
 function onLoad() {
+	// localStorage.clear()
+	if (!localStorage.length) {
+		localStorage.setItem('range', '2-20')
+		localStorage.setItem('autocheck', '0')
+		localStorage.setItem('delay', '500')
+		localStorage.setItem('stopwatch', '1')
+		localStorage.setItem('numpad', '1')
+		localStorage.setItem('sound', '1')
+		localStorage.setItem('theme', '1')
+	}
+
 	settingsContainer.hidden  = true
 	clearLogButton.hidden 	  = true
 	mathExpression.hidden 	  = true
@@ -53,12 +63,52 @@ function onLoad() {
 	checkButton.disabled 		  = true
 	answerInput.disabled  	  = true
 
-	// to local storage
-	if (autocheckCheckbox.checked) {
-		delay = 500
-		checkButton.hidden 		= true
-		autocheckDelay.hidden = false
+	// Range
+	;[ rangeLeft.value, rangeRight.value ] = localStorage.getItem('range').split('-')
+	
+	// Stopwatch
+	const isStopwatch = Boolean(+localStorage.getItem('stopwatch'))
+	stopwatchCheckbox.checked = isStopwatch
+	stopwatch.hidden 					= !isStopwatch
+	
+	// Autocheck
+	const isAutocheck = Boolean(+localStorage.getItem('autocheck'))
+	autocheckCheckbox.checked = isAutocheck
+	autocheckDelay.hidden 		= !isAutocheck
+
+	// Autocheck delay
+	delay = +localStorage.getItem('delay')
+	switch (delay) {
+		case 300:
+			document.getElementById('quickDelay').checked = true
+			break
+		
+		case 500:
+			document.getElementById('mediumDelay').checked = true
+			break
+
+		case 700:
+			document.getElementById('slowDelay').checked = true
 	}
+
+	// Numpad
+	const isNumpad = Boolean(+localStorage.getItem('numpad'))
+	numpadCheckbox.checked 	= isNumpad
+	numpad.hidden 					= !isNumpad
+
+	// Hide Check button if autocheck or numpad
+	if (autocheckCheckbox.checked || numpadCheckbox.checked) {
+		checkButton.hidden = true
+	}
+
+	// Sound
+	soundCheckbox.checked = Boolean(+localStorage.getItem('sound'))
+
+	// Theme
+	const isDarkTheme = Boolean(+localStorage.getItem('theme'))
+	themeCheckbox.checked = isDarkTheme
+	if (themeCheckbox.checked) document.body.classList.remove('body--light')
+	else document.body.classList.add('body--light')
 }
 
 function onKeydown(event) {
@@ -66,7 +116,6 @@ function onKeydown(event) {
 
 	// Autocheck answer without numpad
 	if ( target === answerInput && autocheckCheckbox.checked ) {
-		restrictNumInput(6, event)
 		clearTimeout(autocheckId)
 		autocheckId = setTimeout(onCheck, delay)
 	}
@@ -82,6 +131,9 @@ function onKeydown(event) {
 		|| event.key === ' ' ) { 
 		event.preventDefault() 
 	}
+
+	// Restrict input answer to 8 digits
+	if (target === answerInput) restrictNumInput(8, event)
 
 	// Restrict input range to 3 digits
 	if ( target.closest('#range') ) restrictNumInput(4, event)
@@ -107,8 +159,24 @@ function onClick(event) {
 	if (target === clearLogButton)  	clearLog()
 	if (target === toggleLogButton)		toggleLog()
 	if (target === stopwatchCheckbox)	toggleStopwatch()
-	if (target === themeCheckbox) 		toggleTheme()
-	if (target === numpadCheckbox)		toggleNumpad()			
+
+	if (target === soundCheckbox) {
+		if (target.checked) {
+			localStorage.setItem('sound', '1')
+		} else {
+			localStorage.setItem('sound', '0')
+		}
+	}
+
+	if (target === themeCheckbox) {
+		if (target.checked) {
+			document.body.classList.remove('body--light')
+			localStorage.setItem('theme', '1')
+		} else {
+			document.body.classList.add('body--light')
+			localStorage.setItem('theme', '0')
+		}
+	}
 
 	// Settings button
 	if (target === toggleSettingsButton)	{
@@ -118,27 +186,41 @@ function onClick(event) {
 	
 	// Autocheck
 	if (target === autocheckCheckbox) {
-		if (autocheckCheckbox.checked) {
-			autocheckDelay.hidden 	= false
-			checkButton.hidden 			= true
-			numpadCheck.hidden 			= true
-			numpadBackspace.hidden 	= true
-			numpadZero.classList.add('--autocheck')
+		if (target.checked) {
+			localStorage.setItem('autocheck', '1')
+			autocheckDelay.hidden = false
+			checkButton.hidden = true
 		}	else {
-			autocheckDelay.hidden 	= true
-			checkButton.hidden    	= false
-			numpadCheck.hidden 			= false
-			numpadBackspace.hidden 	= false
-			numpadZero.classList.remove('--autocheck')
+			localStorage.setItem('autocheck', '0')
+			autocheckDelay.hidden = true
+
+			if (!numpadCheckbox.checked) checkButton.hidden = false
 		}
 	}
 
+	// Autocheck delay
 	if ( target.classList.contains('autocheck__radio') ) {
 		delay = getMs(target)
+
+		localStorage.setItem('delay', delay)
 	}
 
 	// Numpad
-	if ( numpadCheckbox.checked && !answerInput.disabled ) {
+	if ( target === numpadCheckbox ) {
+		if (target.checked) {
+			localStorage.setItem('numpad', '1')
+			numpad.hidden = false
+			checkButton.hidden = true
+		} else {
+			localStorage.setItem('numpad', '0')
+			numpad.hidden = true
+
+			if (!autocheckCheckbox.checked) checkButton.hidden = false
+		}
+	}
+
+	// Numpad input
+	if ( target.hasAttribute('data-key') && !answerInput.disabled ) {
 		onNumpad(event)
 	}
 
@@ -201,9 +283,6 @@ function onStop() {
 	clearInterval(stopwatchId)
 
 	stopwatch.classList.add('stopwatch--timestop')
-
-	if (autocheckCheckbox.checked) checkButton.hidden = true
-	else checkButton.hidden = false
 
 	mathExpression.hidden = true
 	startButton.hidden 		= false
@@ -268,22 +347,9 @@ function getRandomMultiplier(min, max) {
 
 function toggleStopwatch() {
 	stopwatch.hidden = !stopwatch.hidden
-}
 
-function toggleTheme() {
-	document.body.classList.toggle('body--light')
-}
-
-function toggleNumpad() {
-	numpad.hidden = !numpad.hidden
-
-	if (numpad.hidden) {
-		checkButton.hidden 		= false
-		answerInput.disabled 	= false
-	} else {
-		checkButton.hidden 		= true
-		answerInput.disabled 	= true
-	}
+	if (stopwatch.hidden) localStorage.setItem('stopwatch', '0')
+	else localStorage.setItem('stopwatch', '1')
 }
 
 export { onCheck }

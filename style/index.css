@@ -214,19 +214,16 @@
   background-color: #ddd;
   cursor: pointer;
 }
+.numpad__table td:focus {
+  outline: none;
+}
 .numpad__check {
   padding: 0 !important;
   border: none !important;
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 .numpad__backspace {
   border: none !important;
-}
-
-.--autocheck {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .log {
