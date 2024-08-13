@@ -7,6 +7,7 @@
   border-radius: 0.5em;
   border: 0.2em solid #888;
   transform: translate(-50%, 0);
+  cursor: pointer;
 }
 .stopwatch:hover {
   border-color: #555;
@@ -220,7 +221,7 @@
 .numpad__check {
   padding: 0 !important;
   border: none !important;
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 .numpad__backspace {
   border: none !important;
