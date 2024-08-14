@@ -3,7 +3,7 @@ import { addLogRow, clearLog, toggleLog } from './components/Log.js'
 import { toggleSettings, getMs } from "./components/Settings.js";
 import { onNumpad } from './components/Numpad.js';
 
-const DELAY_AFTER_ANSWER = 500
+const CORRECTNESS_RENDERING_DELAY = 500
 const VALID_INPUT_VALUES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 													 	'Backspace', 'ArrowLeft', 'ArrowRight', 'Tab', 'Delete']
 // Elements
@@ -267,7 +267,7 @@ function onCheck() {
 			stopwatchId = startStopwatch(stopwatch)
 			// Next expression
 			updateExpression()
-	}, DELAY_AFTER_ANSWER)
+	}, delay)
 }
 
 function onStart() {
@@ -306,7 +306,7 @@ function renderCorrectness(isCorrect) {
     setTimeout(() => {
       correctIcon.hidden = true
       answerInput.classList.remove('answer__input--correct')
-    }, DELAY_AFTER_ANSWER)
+    }, CORRECTNESS_RENDERING_DELAY)
 
   } else {
 		if (soundCheckbox.checked) soundWrongAnswer.play()
@@ -317,7 +317,7 @@ function renderCorrectness(isCorrect) {
     setTimeout(() => {
       wrongIcon.hidden = true
       answerInput.classList.remove('answer__input--wrong')
-    }, DELAY_AFTER_ANSWER)
+    }, CORRECTNESS_RENDERING_DELAY)
   }
 }
 
