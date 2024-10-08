@@ -1,19 +1,16 @@
-# App parts:
+# App parts
   - Main
   - Minor
-
 
 ## Main part
   - Random expression
   - Answer field, limited by 6-digits number
   - Check button
 
-
 ## Minor part
   - Settings
   - Log
   - Stopwatch
-
 
 ### Settings
 > [!NOTE]
@@ -30,7 +27,6 @@
   - Sound toggle for correct and wrong answer (on/off)
   - Theme toggle (dark/light)
 
-
 ### Log
   - History of answers in table, that have next fields:
     - correct/wrong answer sign
@@ -39,7 +35,6 @@
     - received result from user
     - expected (correct) result
   - Button for clean answers history
-
 
 ### Stopwatch
   - Count seconds and centi-seconds, which were spend on each answer. 
